@@ -4,7 +4,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="350.0" maxWidth="581.0" minHeight="350.0" minWidth="558.0" prefHeight="350.0" prefWidth="558.0" stylesheets="main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.resud.controllers.Controller">
+<VBox maxHeight="350.0" maxWidth="581.0" minHeight="350.0" minWidth="558.0" prefHeight="350.0" prefWidth="558.0"
+      stylesheets="main.css" styleClass="BG"
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.resud.controllers.Controller">
    <children>
       <HBox maxHeight="50.0" prefHeight="50.0" prefWidth="150.0">
          <children>
@@ -43,7 +45,7 @@
       </HBox>
       <AnchorPane maxHeight="50.0" prefHeight="50.0">
          <children>
-            <TextField fx:id="tfSearch" layoutX="7.0" layoutY="10.0" maxWidth="300.0" minWidth="268.0" prefHeight="27.0" prefWidth="268.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="138.0" />
+            <TextField fx:id="tfSearch" styleClass="inputSection" layoutX="7.0" layoutY="10.0" maxWidth="300.0" minWidth="268.0" prefHeight="27.0" prefWidth="268.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="138.0" />
             <Button fx:id="btnSearch" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="SEARCH" AnchorPane.rightAnchor="-3.0">
                <padding>
                   <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
@@ -56,10 +58,10 @@
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
          <children>
-            <TableView fx:id="tableDB" prefHeight="200.0" prefWidth="410.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView styleClass="table-view" fx:id="tableDB" prefHeight="200.0" prefWidth="410.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="tcID" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="tcNAME" prefWidth="75.0" text="NAME" />
+                  <TableColumn fx:id="tcID" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="tcNAME" prefWidth="75.0" text="NAME" />
                   <TableColumn fx:id="tcAGE" prefWidth="75.0" text="AGE" />
                   <TableColumn fx:id="tcEMAIL" prefWidth="75.0" text="E-MAIL" />
               </columns>
@@ -74,7 +76,7 @@
       </AnchorPane>
       <HBox prefHeight="50.0" prefWidth="200.0">
          <children>
-            <Label id="label" fx:id="lConnectStatus" text="Label">
+            <Label id="label" fx:id="lConnectStatus" text="Label" styleClass="status">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
