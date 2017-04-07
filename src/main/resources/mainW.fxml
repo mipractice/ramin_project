@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="350.0" maxWidth="581.0" minHeight="350.0" minWidth="558.0" prefHeight="350.0" prefWidth="558.0" stylesheets="main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.resud.controllers.Controller">
+   <children>
+      <HBox maxHeight="50.0" prefHeight="50.0" prefWidth="150.0">
+         <children>
+            <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#showDialog" text="INSERT">
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#updateBD" text="UPDATE">
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deleteBD" text="DELETE">
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+               </padding>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#btnSelect" text="SELECT">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+               </padding></Button>
+         </children>
+      </HBox>
+      <AnchorPane maxHeight="50.0" prefHeight="50.0">
+         <children>
+            <TextField fx:id="tfSearch" layoutX="7.0" layoutY="10.0" maxWidth="300.0" minWidth="268.0" prefHeight="27.0" prefWidth="268.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="138.0" />
+            <Button fx:id="btnSearch" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="123.0" text="SEARCH" AnchorPane.rightAnchor="-3.0">
+               <padding>
+                  <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+               </padding>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TableView fx:id="tableDB" prefHeight="200.0" prefWidth="410.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="tcID" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="tcNAME" prefWidth="75.0" text="NAME" />
+                  <TableColumn fx:id="tcAGE" prefWidth="75.0" text="AGE" />
+                  <TableColumn fx:id="tcEMAIL" prefWidth="75.0" text="E-MAIL" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" />
+         </VBox.margin>
+      </AnchorPane>
+      <HBox prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <Label id="label" fx:id="lConnectStatus" text="Label">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>
