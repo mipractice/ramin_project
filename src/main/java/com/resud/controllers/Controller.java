@@ -85,7 +85,7 @@ public class Controller {
         try {
             Stage stage = new Stage();
             Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("dialogBox.fxml"));
-            stage.setTitle("Редактирование записи");
+            stage.setTitle("Добавление новой записи");
             stage.setMinWidth(300);
             stage.setMinHeight(150);
             stage.setResizable(false);
