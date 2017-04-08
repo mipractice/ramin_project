@@ -17,9 +17,9 @@ public class DBHelper {
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             if(!connection.isClosed()){
-                System.out.println("Соединение с БД установлено!");
+//                System.out.println("Соединение с БД установлено!");
             } else {
-                System.out.println("Ошибка подключения!");
+//                System.out.println("Ошибка подключения!");
             }
         } catch (SQLException sql) {
             sql.printStackTrace();

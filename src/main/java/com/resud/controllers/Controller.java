@@ -56,7 +56,8 @@ public class Controller {
     public void btnSelect(ActionEvent actionEvent){
         try {
             userObservableList = FXCollections.observableArrayList();
-
+            if (!dbHelper.getConnection().isClosed()) lConnectStatus.setText("Соединение с БД установлено!");
+            else System.out.println("Ошибка подключения!");
             Statement statement = dbHelper.getConnection().createStatement();
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
@@ -99,6 +100,9 @@ public class Controller {
     }
 
     public void updateBD(ActionEvent actionEvent) {
+
+
+
     }
 
     public void deleteBD(ActionEvent actionEvent) {
