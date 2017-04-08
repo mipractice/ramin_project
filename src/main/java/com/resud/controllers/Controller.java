@@ -1,44 +1,33 @@
 package com.resud.controllers;
 
 import com.resud.DB.DBHelper;
-import com.resud.controllers.User;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ResourceBundle;
+import java.sql.*;
 
 /**
- * Created by RRM on 07.04.17.
+ * Created by RRM on 08.04.17.
  */
 public class Controller {
 
     @FXML
-    private Button btnAdd;
+    private TextField tfID;
     @FXML
-    private Button btnEdit;
+    private TextField tfName;
     @FXML
-    private Button btnDelete;
+    private TextField tfAge;
     @FXML
-    private TextField tfSearch;
+    private TextField tfEmail;
     @FXML
-    private Button btnSearch;
-    @FXML
-    private TableView<User> tableDB;
+    private TableView<User> tbUsers;
     @FXML
     private TableColumn<User, Integer> tcID;
     @FXML
@@ -47,21 +36,14 @@ public class Controller {
     private TableColumn<User, String> tcAGE;
     @FXML
     private TableColumn<User, String> tcEMAIL;
-    @FXML
-    private Label lConnectStatus;
+
     private ObservableList<User> userObservableList;
     private DBHelper dbHelper = new DBHelper();
 
-
-    public void btnSelect(ActionEvent actionEvent){
+    public void selectDB(ActionEvent actionEvent) {
         try {
             userObservableList = FXCollections.observableArrayList();
-            if (!dbHelper.getConnection().isClosed()) lConnectStatus.setText("Соединение с БД установлено!");
-            else System.out.println("Ошибка подключения!");
-            Statement statement = dbHelper.getConnection().createStatement();
-
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM users");
-
+            ResultSet resultSet = dbHelper.getConnection().createStatement().executeQuery("SELECT * FROM users;");
             while (resultSet.next()){
                 userObservableList.add(new User(resultSet.getInt("id"),
                         resultSet.getString("name"),
@@ -77,50 +59,38 @@ public class Controller {
         tcAGE.setCellValueFactory(new PropertyValueFactory<User, String>("age"));
         tcEMAIL.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
 
-        tableDB.setItems(null);
-        tableDB.setItems(userObservableList);
+        tbUsers.setItems(null);
+        tbUsers.setItems(userObservableList);
     }
 
-    public void showDialog(ActionEvent actionEvent) {
+    public void insertDB(ActionEvent actionEvent) {
         try {
-            Stage stage = new Stage();
-            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("dialogBox.fxml"));
-            stage.setTitle("Добавление новой записи");
-            stage.setMinWidth(300);
-            stage.setMinHeight(150);
-            stage.setResizable(false);
-            stage.setScene(new Scene(parent));
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-            stage.show();
-
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-
-    }
-
-    public void updateBD(ActionEvent actionEvent) {
-
-        try {
-            Statement statement = dbHelper.getConnection().createStatement();
-
+            dbHelper.getConnection().createStatement().execute("INSERT INTO users (name, age, email) VALUES('"
+                    + tfName.getText() + "', "
+                    + Integer.parseInt(tfAge.getText()) + ", '"
+                    + tfEmail.getText() + "');");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
-    public void deleteBD(ActionEvent actionEvent) {
-
+    public void updateDB(ActionEvent actionEvent) {
         try {
-            Statement statement = dbHelper.getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery("DELETE FROM users WHERE id = ");
-
+            dbHelper.getConnection().createStatement().executeUpdate("UPDATE users SET " +
+                    "name = ' " + tfName.getText() + " ', " +
+                    "age = " + Integer.parseInt(tfAge.getText()) + ", " +
+                    "email = ' " + tfEmail.getText() + " ' " +
+                    "WHERE id = " + Integer.parseInt(tfID.getText()));
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    public void deleteDB(ActionEvent actionEvent) {
+        try {
+            dbHelper.getConnection().createStatement().execute("DELETE FROM users WHERE id = " + Integer.parseInt(tfID.getText()));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

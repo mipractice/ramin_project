@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.resud.controllers.Controller">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <AnchorPane prefHeight="100.0" prefWidth="606.0">
+               <children>
+                  <Button layoutX="172.0" layoutY="32.0" mnemonicParsing="false" onAction="#selectDB" text="SELECT">
+                     <padding>
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button layoutX="14.0" layoutY="32.0" mnemonicParsing="false" onAction="#insertDB" text="INSERT">
+                     <padding>
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button layoutX="331.0" layoutY="32.0" mnemonicParsing="false" onAction="#updateDB" text="UPDATE">
+                     <padding>
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+                     </padding>
+                  </Button>
+                  <Button layoutX="487.0" layoutY="32.0" mnemonicParsing="false" onAction="#deleteDB" text="DELETE">
+                     <padding>
+                        <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <AnchorPane prefHeight="100.0" prefWidth="605.0">
+               <children>
+                  <TextField fx:id="tfID" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="275.0" promptText="ID" />
+                  <TextField fx:id="tfName" layoutX="14.0" layoutY="59.0" prefHeight="27.0" prefWidth="275.0" promptText="NAME" />
+                  <TextField fx:id="tfAge" layoutX="311.0" layoutY="14.0" prefHeight="27.0" prefWidth="275.0" promptText="AGE" />
+                  <TextField fx:id="tfEmail" layoutX="311.0" layoutY="59.0" prefHeight="27.0" prefWidth="275.0" promptText="E-MAIL" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TableView fx:id="tbUsers" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                  <TableColumn fx:id="tcID" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="tcNAME" prefWidth="75.0" text="NAME" />
+                  <TableColumn fx:id="tcAGE" prefWidth="75.0" text="AGE" />
+                  <TableColumn fx:id="tcEMAIL" prefWidth="75.0" text="E-MAIL" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
