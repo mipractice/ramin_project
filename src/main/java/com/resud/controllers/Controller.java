@@ -2,6 +2,7 @@ package com.resud.controllers;
 
 import com.resud.DB.DBHelper;
 
+import com.resud.alert.AlertBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -40,9 +41,7 @@ public class Controller {
 
     private ObservableList<User> userObservableList;
     private DBHelper dbHelper = new DBHelper();
-
-    private Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
-    private Alert alertWarning = new Alert(Alert.AlertType.WARNING);
+    private AlertBox alertBox = new AlertBox();
 
     public void selectDB(ActionEvent actionEvent) {
         try {
@@ -76,15 +75,9 @@ public class Controller {
                         + tfName.getText() + "', "
                         + Integer.parseInt(tfAge.getText()) + ", '"
                         + tfEmail.getText() + "');");
-
-                alertInfo.setTitle("Поздравляю!");
-                alertInfo.setHeaderText(tfName.getText() + " успешно добавлен в БД!");
-                alertInfo.showAndWait();
+                alertBox.Info("Поздравляю!", tfName.getText() + " успешно добавлен в БД!",null);
             } else {
-                alertWarning.setTitle("Предупреждение!");
-                alertWarning.setHeaderText("Поле ID является не обязательным.");
-                alertWarning.setContentText("Не все поля заполнены!");
-                alertWarning.showAndWait();
+                alertBox.Warning("Предупреждение!", "Поле ID является не обязательным.", "Не все поля заполнены!");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -101,18 +94,10 @@ public class Controller {
                         "age = " + Integer.parseInt(tfAge.getText()) + ", " +
                         "email = ' " + tfEmail.getText() + " ' " +
                         "WHERE id = " + Integer.parseInt(tfID.getText()));
-
-                alertInfo.setTitle("Поздравляю!");
-                alertInfo.setHeaderText("Пользователь был изменен.");
-                alertInfo.showAndWait();
+                alertBox.Info("Поздравляю!", "Пользователь был изменен.", null);
             } else {
-                alertWarning.setTitle("Предупреждение!");
-                alertWarning.setHeaderText("Поле ID является не обязательным.");
-                alertWarning.setContentText("Не все поля заполнены!");
-
-                alertWarning.showAndWait();
+                alertBox.Warning("Предупреждение!", "Поле ID является не обязательным.", "Не все поля заполнены!");
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -122,15 +107,9 @@ public class Controller {
         try {
             if(tfID.getText().trim().length() > 0){
                 dbHelper.getConnection().createStatement().execute("DELETE FROM users WHERE id = " + Integer.parseInt(tfID.getText()));
-
-                alertInfo.setTitle("Поздравляю!");
-                alertInfo.setHeaderText("Пользователь под # " + tfID.getText() + ". был удален из БД!");
-                alertInfo.showAndWait();
+                alertBox.Info("Поздравляю!", "Пользователь под # " + tfID.getText() + ". был удален из БД!", null);
             } else {
-                alertWarning.setTitle("Предупреждение!");
-                alertWarning.setHeaderText("Поле ID является обязательным.");
-                alertWarning.setContentText("Удаление происходит по выбору порядкового номера (ID)!");
-                alertWarning.showAndWait();
+                alertBox.Warning("Предупреждение!", "Поле ID является обязательным.", "Удаление происходит по выбору порядкового номера (ID)!");
             }
         } catch (SQLException e) {
             e.printStackTrace();
