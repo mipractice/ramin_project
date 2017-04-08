@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -40,6 +41,9 @@ public class Controller {
     private ObservableList<User> userObservableList;
     private DBHelper dbHelper = new DBHelper();
 
+    private Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
+    private Alert alertWarning = new Alert(Alert.AlertType.WARNING);
+
     public void selectDB(ActionEvent actionEvent) {
         try {
             userObservableList = FXCollections.observableArrayList();
@@ -65,10 +69,23 @@ public class Controller {
 
     public void insertDB(ActionEvent actionEvent) {
         try {
-            dbHelper.getConnection().createStatement().execute("INSERT INTO users (name, age, email) VALUES('"
-                    + tfName.getText() + "', "
-                    + Integer.parseInt(tfAge.getText()) + ", '"
-                    + tfEmail.getText() + "');");
+            if((tfName.getText().trim().length() > 0)
+                    && (tfAge.getText().trim().length() > 0 )
+                    && (tfEmail.getText().trim().length() > 0)){
+                dbHelper.getConnection().createStatement().execute("INSERT INTO users (name, age, email) VALUES('"
+                        + tfName.getText() + "', "
+                        + Integer.parseInt(tfAge.getText()) + ", '"
+                        + tfEmail.getText() + "');");
+
+                alertInfo.setTitle("Поздравляю!");
+                alertInfo.setHeaderText(tfName.getText() + " успешно добавлен в БД!");
+                alertInfo.showAndWait();
+            } else {
+                alertWarning.setTitle("Предупреждение!");
+                alertWarning.setHeaderText("Поле ID является не обязательным.");
+                alertWarning.setContentText("Не все поля заполнены!");
+                alertWarning.showAndWait();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -76,11 +93,26 @@ public class Controller {
 
     public void updateDB(ActionEvent actionEvent) {
         try {
-            dbHelper.getConnection().createStatement().executeUpdate("UPDATE users SET " +
-                    "name = ' " + tfName.getText() + " ', " +
-                    "age = " + Integer.parseInt(tfAge.getText()) + ", " +
-                    "email = ' " + tfEmail.getText() + " ' " +
-                    "WHERE id = " + Integer.parseInt(tfID.getText()));
+            if((tfName.getText().trim().length() > 0)
+                    && (tfAge.getText().trim().length() > 0 )
+                    && (tfEmail.getText().trim().length() > 0)){
+                dbHelper.getConnection().createStatement().executeUpdate("UPDATE users SET " +
+                        "name = ' " + tfName.getText() + " ', " +
+                        "age = " + Integer.parseInt(tfAge.getText()) + ", " +
+                        "email = ' " + tfEmail.getText() + " ' " +
+                        "WHERE id = " + Integer.parseInt(tfID.getText()));
+
+                alertInfo.setTitle("Поздравляю!");
+                alertInfo.setHeaderText("Пользователь был изменен.");
+                alertInfo.showAndWait();
+            } else {
+                alertWarning.setTitle("Предупреждение!");
+                alertWarning.setHeaderText("Поле ID является не обязательным.");
+                alertWarning.setContentText("Не все поля заполнены!");
+
+                alertWarning.showAndWait();
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -88,7 +120,18 @@ public class Controller {
 
     public void deleteDB(ActionEvent actionEvent) {
         try {
-            dbHelper.getConnection().createStatement().execute("DELETE FROM users WHERE id = " + Integer.parseInt(tfID.getText()));
+            if(tfID.getText().trim().length() > 0){
+                dbHelper.getConnection().createStatement().execute("DELETE FROM users WHERE id = " + Integer.parseInt(tfID.getText()));
+
+                alertInfo.setTitle("Поздравляю!");
+                alertInfo.setHeaderText("Пользователь под # " + tfID.getText() + ". был удален из БД!");
+                alertInfo.showAndWait();
+            } else {
+                alertWarning.setTitle("Предупреждение!");
+                alertWarning.setHeaderText("Поле ID является обязательным.");
+                alertWarning.setContentText("Удаление происходит по выбору порядкового номера (ID)!");
+                alertWarning.showAndWait();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
