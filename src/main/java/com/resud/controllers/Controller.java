@@ -97,14 +97,30 @@ public class Controller {
         } catch (IOException e){
             e.printStackTrace();
         }
+
     }
 
     public void updateBD(ActionEvent actionEvent) {
 
+        try {
+            Statement statement = dbHelper.getConnection().createStatement();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
     }
 
     public void deleteBD(ActionEvent actionEvent) {
+
+        try {
+            Statement statement = dbHelper.getConnection().createStatement();
+            ResultSet resultSet = statement.executeQuery("DELETE FROM users WHERE id = ");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }
