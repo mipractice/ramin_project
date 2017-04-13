@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class MainOld extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("mainW.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/mainW.fxml"));
 
         primaryStage.setTitle("CRUD");
         primaryStage.setMinHeight(350);

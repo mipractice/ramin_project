@@ -81,7 +81,7 @@ public class ControllerOld {
     public void showDialog(ActionEvent actionEvent) {
         try {
             Stage stage = new Stage();
-            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("dialogBox.fxml"));
+            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/dialogBox.fxml"));
             stage.setTitle("Добавление новой записи");
             stage.setMinWidth(300);
             stage.setMinHeight(150);
@@ -113,7 +113,7 @@ public class ControllerOld {
 
         try {
             Statement statement = dbHelper.getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery("DELETE FROM users WHERE id = ");
+            ResultSet resultSet = statement.executeQuery("DELETE FROM users WHERE id = 1");
 
         } catch (SQLException e) {
             e.printStackTrace();
