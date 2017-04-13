@@ -1,4 +1,4 @@
-package com.resud.DB;
+package com.resud.db;
 
 import java.sql.*;
 

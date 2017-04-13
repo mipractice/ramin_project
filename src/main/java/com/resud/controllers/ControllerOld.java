@@ -1,7 +1,6 @@
 package com.resud.controllers;
 
-import com.resud.DB.DBHelper;
-import com.resud.controllers.User;
+import com.resud.db.DBHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,11 +15,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ResourceBundle;
 
 /**
  * Created by RRM on 07.04.17.

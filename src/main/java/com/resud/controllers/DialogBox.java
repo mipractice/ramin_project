@@ -1,6 +1,6 @@
 package com.resud.controllers;
 
-import com.resud.DB.DBHelper;
+import com.resud.db.DBHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
