@@ -1,7 +1,7 @@
 # appFX
 -------
 ```sql
-CREATE DATABASE `Project` DEFAULT CHARACTER SET utf8;
+CREATE SCHEMA `Project` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```
 -------
 ```sql
