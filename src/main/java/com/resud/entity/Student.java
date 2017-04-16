@@ -63,7 +63,7 @@ public class Student {
         return "Студент: [ " +
                 "ФИО: '" + nameStudent + '\'' +
                 ", Возраст: " + ageStudent +
-                ", E-mail: " + emailStudent + " ];"
+                ", E-mail: '" + emailStudent + "' ];"
                 ;
     }
 }
