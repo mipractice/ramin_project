@@ -42,7 +42,6 @@ public class controllerStudent {
     @FXML
     private TableColumn<fxStudent, String> tcEMAIL;
 
-    private EntityManager entityManager;
     private ObservableList<fxStudent> userObservableList;
     private alertBox alertBox = new alertBox();
 
@@ -92,23 +91,20 @@ public class controllerStudent {
     }
 
     public void selectDB(ActionEvent actionEvent) {
-        entityManager = Main.entityManagerFactory.createEntityManager();
-        List<Student> students = entityManager.createQuery("SELECT c FROM Student c").getResultList();
+        List<Student> lsStudent = studentMethod.getAllStudent();
         userObservableList = FXCollections.observableArrayList();
-
-        for (Student student : students){
+        for (Student student : lsStudent){
             userObservableList.add(new fxStudent(student.getIdStudent(), student.getAgeStudent(), student.getNameStudent(), student.getEmailStudent()));
         }
 
         tbUsers.setItems(userObservableList);
         tbUsers.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-//        tcID.setCellValueFactory(cell -> cell.getValue().getIdStudent());
-
         tcID.setCellValueFactory(new PropertyValueFactory<fxStudent, Long>("idStudent"));
         tcNAME.setCellValueFactory(new PropertyValueFactory<fxStudent, String>("nameStudent"));
         tcAGE.setCellValueFactory(new PropertyValueFactory<fxStudent, Integer>("ageStudent"));
         tcEMAIL.setCellValueFactory(new PropertyValueFactory<fxStudent, String>("emailStudent"));
+
     }
 
 }
