@@ -1,6 +1,5 @@
 package com.resud.controllers;
 
-import com.resud.Main;
 import com.resud.alert.alertBox;
 import com.resud.entity.Student;
 import com.resud.function.funcStudent;
@@ -8,13 +7,14 @@ import com.resud.function.funcStudent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 
@@ -107,4 +107,16 @@ public class controllerStudent {
 
     }
 
+
+    public void pickTableItem(MouseEvent mouseEvent) {
+        tbUsers.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event){
+                tfID.setText(String.valueOf(tbUsers.getSelectionModel().getSelectedItem().getIdStudent()));
+                tfName.setText(tbUsers.getSelectionModel().getSelectedItem().getNameStudent());
+                tfAge.setText(String.valueOf(tbUsers.getSelectionModel().getSelectedItem().getAgeStudent()));
+                tfEmail.setText(tbUsers.getSelectionModel().getSelectedItem().getEmailStudent());
+            }
+        });
+    }
 }
