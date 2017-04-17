@@ -4,15 +4,15 @@ import javafx.scene.control.Alert;
 /**
  * Created by RRM on 08.04.17.
  */
-public class AlertBox {
+public class alertBox {
 
     private static Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     private static Alert alertWarning = new Alert(Alert.AlertType.WARNING);
 
     public static void Info(String sTitle, String txtHeader, String txtContent){
-
         alertInfo.setTitle(sTitle);
         alertInfo.setHeaderText(txtHeader);
+        alertInfo.setContentText(txtContent);
         alertInfo.showAndWait();
     }
 

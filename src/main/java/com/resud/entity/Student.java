@@ -2,9 +2,6 @@ package com.resud.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by RRM on 16.04.17.
- */
 @Entity
 @Table(name = "student")
 @NamedQuery(name = "Student.getAll", query = "SELECT c FROM Student c")

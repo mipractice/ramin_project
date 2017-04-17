@@ -1,4 +1,4 @@
-package com.resud.cernel;
+package com.resud;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,17 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * Created by RRM on 07.04.17.
- */
 public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/mainForm.fxml"));
-        primaryStage.setTitle("CRUD");
+        primaryStage.setTitle("CRUD App");
         primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(parent, 600,700));
+        primaryStage.setScene(new Scene(parent, 600,405));
         primaryStage.show();
     }
 

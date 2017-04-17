@@ -1,15 +1,13 @@
-package com.resud.cernel;
+package com.resud.function;
 
 import com.resud.entity.Student;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
-/**
- * Created by RRM on 16.04.17.
- */
-public class StudentMethod {
-
+public class funcStudent {
     private EntityManager entityManager = Persistence.createEntityManagerFactory("CRUD").createEntityManager();
 
     public Student addStudent(Student student) {
@@ -38,5 +36,4 @@ public class StudentMethod {
         TypedQuery<Student> studentTypedQuery = entityManager.createNamedQuery("Student.getAll", Student.class);
         return studentTypedQuery.getResultList();
     }
-
 }
