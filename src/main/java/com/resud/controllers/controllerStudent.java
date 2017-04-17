@@ -1,6 +1,6 @@
 package com.resud.controllers;
 
-import com.resud.db.DBHelper;
+import com.resud.Main;
 import com.resud.alert.alertBox;
 import com.resud.entity.Student;
 import com.resud.function.funcStudent;
@@ -14,8 +14,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.sql.*;
+import javax.persistence.EntityManager;
 import java.util.List;
+
 
 /**
  * Created by RRM on 08.04.17.
@@ -31,42 +32,19 @@ public class controllerStudent {
     @FXML
     private TextField tfEmail;
     @FXML
-    private TableView<User> tbUsers;
+    private TableView<fxStudent> tbUsers;
     @FXML
-    private TableColumn<User, Integer> tcID;
+    private TableColumn<fxStudent, Long> tcID;
     @FXML
-    private TableColumn<User, String> tcNAME;
+    private TableColumn<fxStudent, String> tcNAME;
     @FXML
-    private TableColumn<User, String> tcAGE;
+    private TableColumn<fxStudent, Integer> tcAGE;
     @FXML
-    private TableColumn<User, String> tcEMAIL;
+    private TableColumn<fxStudent, String> tcEMAIL;
 
-    private ObservableList<User> userObservableList;
-    private DBHelper dbHelper = new DBHelper();
+    private EntityManager entityManager;
+    private ObservableList<fxStudent> userObservableList;
     private alertBox alertBox = new alertBox();
-
-//    public void selectDB(ActionEvent actionEvent) {
-//        try {
-//            userObservableList = FXCollections.observableArrayList();
-//            ResultSet resultSet = dbHelper.getConnection().createStatement().executeQuery("SELECT * FROM users;");
-//            while (resultSet.next()) {
-//                userObservableList.add(new User(resultSet.getInt("id"),
-//                        resultSet.getString("name"),
-//                        resultSet.getString("age"),
-//                        resultSet.getString("email")));
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        tcID.setCellValueFactory(new PropertyValueFactory<User, Integer>("id"));
-//        tcNAME.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
-//        tcAGE.setCellValueFactory(new PropertyValueFactory<User, String>("age"));
-//        tcEMAIL.setCellValueFactory(new PropertyValueFactory<User, String>("email"));
-//
-//        tbUsers.setItems(null);
-//        tbUsers.setItems(userObservableList);
-//    }
 
     private funcStudent studentMethod = new funcStudent();
 
@@ -114,11 +92,23 @@ public class controllerStudent {
     }
 
     public void selectDB(ActionEvent actionEvent) {
-        List<Student> students = studentMethod.getAllStudent();
+        entityManager = Main.entityManagerFactory.createEntityManager();
+        List<Student> students = entityManager.createQuery("SELECT c FROM Student c").getResultList();
+        userObservableList = FXCollections.observableArrayList();
 
-        for (Student stu : students) {
-            System.out.println(stu);
+        for (Student student : students){
+            userObservableList.add(new fxStudent(student.getIdStudent(), student.getAgeStudent(), student.getNameStudent(), student.getEmailStudent()));
         }
+
+        tbUsers.setItems(userObservableList);
+        tbUsers.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+//        tcID.setCellValueFactory(cell -> cell.getValue().getIdStudent());
+
+        tcID.setCellValueFactory(new PropertyValueFactory<fxStudent, Long>("idStudent"));
+        tcNAME.setCellValueFactory(new PropertyValueFactory<fxStudent, String>("nameStudent"));
+        tcAGE.setCellValueFactory(new PropertyValueFactory<fxStudent, Integer>("ageStudent"));
+        tcEMAIL.setCellValueFactory(new PropertyValueFactory<fxStudent, String>("emailStudent"));
     }
 
 }
