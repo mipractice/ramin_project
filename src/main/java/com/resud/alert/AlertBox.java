@@ -4,7 +4,7 @@ import javafx.scene.control.Alert;
 /**
  * Created by RRM on 08.04.17.
  */
-public class alertBox {
+public class AlertBox {
 
     private static Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     private static Alert alertWarning = new Alert(Alert.AlertType.WARNING);

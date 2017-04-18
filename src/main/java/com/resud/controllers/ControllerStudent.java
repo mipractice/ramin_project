@@ -1,8 +1,8 @@
 package com.resud.controllers;
 
-import com.resud.alert.alertBox;
+import com.resud.alert.AlertBox;
 import com.resud.entity.Student;
-import com.resud.function.funcStudent;
+import com.resud.function.FunctionStudent;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,14 +14,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-
 import java.util.List;
 
-
-/**
- * Created by RRM on 08.04.17.
- */
-public class controllerStudent {
+public class ControllerStudent {
 
     @FXML
     private TextField tfID;
@@ -32,20 +27,20 @@ public class controllerStudent {
     @FXML
     private TextField tfEmail;
     @FXML
-    private TableView<fxStudent> tbUsers;
+    private TableView<GetSetStudent> tbUsers;
     @FXML
-    private TableColumn<fxStudent, Long> tcID;
+    private TableColumn<GetSetStudent, Long> tcID;
     @FXML
-    private TableColumn<fxStudent, String> tcNAME;
+    private TableColumn<GetSetStudent, String> tcNAME;
     @FXML
-    private TableColumn<fxStudent, Integer> tcAGE;
+    private TableColumn<GetSetStudent, Integer> tcAGE;
     @FXML
-    private TableColumn<fxStudent, String> tcEMAIL;
+    private TableColumn<GetSetStudent, String> tcEMAIL;
 
-    private ObservableList<fxStudent> userObservableList;
-    private alertBox alertBox = new alertBox();
+    private ObservableList<GetSetStudent> userObservableList;
+    private AlertBox alertBox = new AlertBox();
 
-    private funcStudent studentMethod = new funcStudent();
+    private FunctionStudent studentMethod = new FunctionStudent();
 
     public void insertDB(ActionEvent actionEvent) {
         if ((tfName.getText().trim().length() > 0)
@@ -77,7 +72,7 @@ public class controllerStudent {
                 && (tfAge.getText().trim().length() > 0)
                 && (tfEmail.getText().trim().length() > 0)) {
 
-            Student student = studentMethod.get(Integer.parseInt(tfID.getText()));
+            Student student = studentMethod.getByIdStudent(Integer.parseInt(tfID.getText()));
             student.setNameStudent(tfName.getText());
             student.setAgeStudent(Integer.parseInt(tfAge.getText()));
             student.setEmailStudent(tfEmail.getText());
@@ -94,19 +89,18 @@ public class controllerStudent {
         List<Student> lsStudent = studentMethod.getAllStudent();
         userObservableList = FXCollections.observableArrayList();
         for (Student student : lsStudent){
-            userObservableList.add(new fxStudent(student.getIdStudent(), student.getAgeStudent(), student.getNameStudent(), student.getEmailStudent()));
+            userObservableList.add(new GetSetStudent(student.getIdStudent(), student.getAgeStudent(), student.getNameStudent(), student.getEmailStudent()));
         }
 
         tbUsers.setItems(userObservableList);
         tbUsers.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
-        tcID.setCellValueFactory(new PropertyValueFactory<fxStudent, Long>("idStudent"));
-        tcNAME.setCellValueFactory(new PropertyValueFactory<fxStudent, String>("nameStudent"));
-        tcAGE.setCellValueFactory(new PropertyValueFactory<fxStudent, Integer>("ageStudent"));
-        tcEMAIL.setCellValueFactory(new PropertyValueFactory<fxStudent, String>("emailStudent"));
+        tcID.setCellValueFactory(new PropertyValueFactory<GetSetStudent, Long>("idStudent"));
+        tcNAME.setCellValueFactory(new PropertyValueFactory<GetSetStudent, String>("nameStudent"));
+        tcAGE.setCellValueFactory(new PropertyValueFactory<GetSetStudent, Integer>("ageStudent"));
+        tcEMAIL.setCellValueFactory(new PropertyValueFactory<GetSetStudent, String>("emailStudent"));
 
     }
-
 
     public void pickTableItem(MouseEvent mouseEvent) {
         tbUsers.setOnMouseClicked(new EventHandler<MouseEvent>(){

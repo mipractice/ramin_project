@@ -4,14 +4,14 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class fxStudent {
+public class GetSetStudent {
 
     private SimpleLongProperty idStudent;
     private SimpleIntegerProperty ageStudent;
     private SimpleStringProperty nameStudent;
     private SimpleStringProperty emailStudent;
 
-    public fxStudent(long idStudent, int ageStudent, String nameStudent, String emailStudent) {
+    public GetSetStudent(long idStudent, int ageStudent, String nameStudent, String emailStudent) {
         this.idStudent = new SimpleLongProperty(idStudent);
         this.ageStudent = new SimpleIntegerProperty(ageStudent);
         this.nameStudent = new SimpleStringProperty(nameStudent);
