@@ -3,11 +3,8 @@ package com.resud.entity;
 import javax.persistence.*;
 import java.util.Collection;
 
-/**
- * Created by RRM on 19.04.17.
- */
 @Entity
-@Table(name = "region", schema = "Project", catalog = "")
+@Table(name = "region", schema = "Project")
 public class RegionEntity {
     private int idRegion;
     private String regionName;
@@ -52,25 +49,25 @@ public class RegionEntity {
         return result;
     }
 
-    private StudentEntity id_student;
+    private Collection<CountryEntity> id_region;
+
+    @OneToMany(mappedBy = "id_region")
+    public Collection<CountryEntity> getId_region() {
+        return id_region;
+    }
+
+    public void setId_region(Collection<CountryEntity> id_region) {
+        this.id_region = id_region;
+    }
+
+    private CityEntity id_city;
 
     @ManyToOne(optional = false)
-    public StudentEntity getId_student() {
-        return id_student;
-    }
-
-    public void setId_student(StudentEntity id_student) {
-        this.id_student = id_student;
-    }
-
-    private Collection<CityEntity> id_city;
-
-    @OneToMany(mappedBy = "id_city")
-    public Collection<CityEntity> getId_city() {
+    public CityEntity getId_city() {
         return id_city;
     }
 
-    public void setId_city(Collection<CityEntity> id_city) {
+    public void setId_city(CityEntity id_city) {
         this.id_city = id_city;
     }
 }

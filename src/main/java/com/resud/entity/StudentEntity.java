@@ -4,11 +4,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
 
-/**
- * Created by RRM on 19.04.17.
- */
 @Entity
-@Table(name = "student", schema = "Project", catalog = "")
+@Table(name = "student", schema = "Project")
 public class StudentEntity {
     private int idStudent;
     private String firstName;
@@ -118,14 +115,14 @@ public class StudentEntity {
         return result;
     }
 
-    private Collection<RegionEntity> id_student;
+    private Collection<CityEntity> id_student;
 
     @OneToMany(mappedBy = "id_student")
-    public Collection<RegionEntity> getId_student() {
+    public Collection<CityEntity> getId_student() {
         return id_student;
     }
 
-    public void setId_student(Collection<RegionEntity> id_student) {
+    public void setId_student(Collection<CityEntity> id_student) {
         this.id_student = id_student;
     }
 }

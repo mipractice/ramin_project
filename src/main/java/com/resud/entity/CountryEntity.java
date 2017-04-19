@@ -2,11 +2,8 @@ package com.resud.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by RRM on 19.04.17.
- */
 @Entity
-@Table(name = "country", schema = "Project", catalog = "")
+@Table(name = "country", schema = "Project")
 public class CountryEntity {
     private int idCountry;
     private String countryName;
@@ -51,14 +48,14 @@ public class CountryEntity {
         return result;
     }
 
-    private CityEntity id_country;
+    private RegionEntity id_region;
 
     @ManyToOne(optional = false)
-    public CityEntity getId_country() {
-        return id_country;
+    public RegionEntity getId_region() {
+        return id_region;
     }
 
-    public void setId_country(CityEntity id_country) {
-        this.id_country = id_country;
+    public void setId_region(RegionEntity id_region) {
+        this.id_region = id_region;
     }
 }
