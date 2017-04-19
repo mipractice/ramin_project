@@ -1,7 +1,7 @@
 package com.resud.function;
 
 import com.resud.controllers.StudentService;
-import com.resud.entity.Student;
+import com.resud.entity.StudentEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -9,22 +9,22 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class FunctionStudent implements StudentService{
-    private EntityManager entityManager = Persistence.createEntityManagerFactory("CRUD").createEntityManager();
+    private EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
 
     @Override
-    public Student getByIdStudent(long idStudent) {
-        return entityManager.find(Student.class, idStudent);
+    public StudentEntity getByIdStudent(long idStudent) {
+        return entityManager.find(StudentEntity.class, idStudent);
     }
 
-    public Student addStudent(Student student) {
+    public StudentEntity addStudent(StudentEntity student) {
         entityManager.getTransaction().begin();
-        Student studentAddDB = entityManager.merge(student);
+        StudentEntity studentAddDB = entityManager.merge(student);
         entityManager.getTransaction().commit();
         return studentAddDB;
     }
 
     @Override
-    public void updateStudent(Student student) {
+    public void updateStudent(StudentEntity student) {
         entityManager.getTransaction().begin();
         entityManager.merge(student);
         entityManager.getTransaction().commit();
@@ -38,8 +38,8 @@ public class FunctionStudent implements StudentService{
     }
 
     @Override
-    public List<Student> getAllStudent(){
-        TypedQuery<Student> studentTypedQuery = entityManager.createNamedQuery("Student.getAll", Student.class);
+    public List<StudentEntity> getAllStudent(){
+        TypedQuery<StudentEntity> studentTypedQuery = entityManager.createNamedQuery("Student.getAll", StudentEntity.class);
         return studentTypedQuery.getResultList();
     }
 }

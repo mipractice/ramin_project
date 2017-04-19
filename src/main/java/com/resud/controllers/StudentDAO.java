@@ -4,7 +4,7 @@ import com.resud.entity.StudentEntity;
 
 import java.util.List;
 
-public interface StudentService {
+public interface StudentDAO {
 
     StudentEntity getByIdStudent(long idStudent);
 

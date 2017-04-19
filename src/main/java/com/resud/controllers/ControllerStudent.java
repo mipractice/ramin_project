@@ -1,7 +1,6 @@
 package com.resud.controllers;
 
 import com.resud.alert.AlertBox;
-import com.resud.entity.Student;
 import com.resud.function.FunctionStudent;
 
 import javafx.collections.FXCollections;
@@ -39,14 +38,13 @@ public class ControllerStudent {
 
     private ObservableList<GetSetStudent> userObservableList;
     private AlertBox alertBox = new AlertBox();
-
     private FunctionStudent studentMethod = new FunctionStudent();
 
     public void insertDB(ActionEvent actionEvent) {
         if ((tfName.getText().trim().length() > 0)
                 && (tfAge.getText().trim().length() > 0)
                 && (tfEmail.getText().trim().length() > 0)) {
-            Student student = new Student();
+            StudentEntity student = new StudentEntity();
             student.setNameStudent(tfName.getText());
             student.setAgeStudent(Integer.parseInt(tfAge.getText()));
             student.setEmailStudent(tfEmail.getText());
@@ -93,7 +91,6 @@ public class ControllerStudent {
         }
 
         tbUsers.setItems(userObservableList);
-        tbUsers.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         tcID.setCellValueFactory(new PropertyValueFactory<GetSetStudent, Long>("idStudent"));
         tcNAME.setCellValueFactory(new PropertyValueFactory<GetSetStudent, String>("nameStudent"));
@@ -113,4 +110,5 @@ public class ControllerStudent {
             }
         });
     }
+
 }

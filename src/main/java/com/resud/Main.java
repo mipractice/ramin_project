@@ -12,7 +12,9 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception {
         Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/mainForm.fxml"));
         primaryStage.setTitle("CRUD App");
-        primaryStage.setResizable(false);
+        //primaryStage.setResizable(false);
+        primaryStage.setMinHeight(405);
+        primaryStage.setMinWidth(600);
         primaryStage.setScene(new Scene(parent, 600,405));
         primaryStage.show();
     }
