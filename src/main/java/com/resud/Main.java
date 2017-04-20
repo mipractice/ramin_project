@@ -10,12 +10,12 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/mainForm.fxml"));
+        Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/newForm.fxml"));
         primaryStage.setTitle("CRUD App");
-        //primaryStage.setResizable(false);
-        primaryStage.setMinHeight(405);
-        primaryStage.setMinWidth(600);
-        primaryStage.setScene(new Scene(parent, 600,405));
+        primaryStage.setResizable(false);
+//        primaryStage.setMinHeight(405);
+//        primaryStage.setMinWidth(600);
+        primaryStage.setScene(new Scene(parent, 800,600));
         primaryStage.show();
     }
 

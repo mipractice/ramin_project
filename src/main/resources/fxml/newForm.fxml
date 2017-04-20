@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+            <ChoiceBox prefWidth="205.0" />
+          <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" text="Добавить" />
+            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" text="Обновить" />
+            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" text="Удалить" />
+            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" text="Вывести" />
+        </items>
+      </ToolBar>
+      <SplitPane dividerPositions="0.37468671679197996" prefHeight="531.0" prefWidth="800.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="540.0" prefWidth="299.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="536.0" prefWidth="495.0">
+               <children>
+                  <TableView layoutX="10.0" layoutY="9.0" prefHeight="502.0" prefWidth="475.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="C1" />
+                      <TableColumn prefWidth="75.0" text="C2" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</VBox>

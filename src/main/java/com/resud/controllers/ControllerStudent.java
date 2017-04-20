@@ -1,6 +1,7 @@
 package com.resud.controllers;
 
 import com.resud.alert.AlertBox;
+import com.resud.entity.StudentEntity;
 import com.resud.function.FunctionStudent;
 
 import javafx.collections.FXCollections;
@@ -45,9 +46,9 @@ public class ControllerStudent {
                 && (tfAge.getText().trim().length() > 0)
                 && (tfEmail.getText().trim().length() > 0)) {
             StudentEntity student = new StudentEntity();
-            student.setNameStudent(tfName.getText());
-            student.setAgeStudent(Integer.parseInt(tfAge.getText()));
-            student.setEmailStudent(tfEmail.getText());
+//            student.setFirstName(tfName.getText());
+//            student.setAgeStudent(Integer.parseInt(tfAge.getText()));
+//            student.setEmailStudent(tfEmail.getText());
             studentMethod.addStudent(student);
             alertBox.Info("Поздравляю!", tfName.getText() + " успешно добавлен в БД!", null);
         } else {
@@ -70,12 +71,12 @@ public class ControllerStudent {
                 && (tfAge.getText().trim().length() > 0)
                 && (tfEmail.getText().trim().length() > 0)) {
 
-            Student student = studentMethod.getByIdStudent(Integer.parseInt(tfID.getText()));
-            student.setNameStudent(tfName.getText());
-            student.setAgeStudent(Integer.parseInt(tfAge.getText()));
-            student.setEmailStudent(tfEmail.getText());
-
-            studentMethod.updateStudent(student);
+//            Student student = studentMethod.getByIdStudent(Integer.parseInt(tfID.getText()));
+//            student.setNameStudent(tfName.getText());
+//            student.setAgeStudent(Integer.parseInt(tfAge.getText()));
+//            student.setEmailStudent(tfEmail.getText());
+//
+//            studentMethod.updateStudent(student);
 
             alertBox.Info("Поздравляю!", "Пользователь был изменен.", null);
         } else {
@@ -84,31 +85,31 @@ public class ControllerStudent {
     }
 
     public void selectDB(ActionEvent actionEvent) {
-        List<Student> lsStudent = studentMethod.getAllStudent();
-        userObservableList = FXCollections.observableArrayList();
-        for (Student student : lsStudent){
-            userObservableList.add(new GetSetStudent(student.getIdStudent(), student.getAgeStudent(), student.getNameStudent(), student.getEmailStudent()));
-        }
-
-        tbUsers.setItems(userObservableList);
-
-        tcID.setCellValueFactory(new PropertyValueFactory<GetSetStudent, Long>("idStudent"));
-        tcNAME.setCellValueFactory(new PropertyValueFactory<GetSetStudent, String>("nameStudent"));
-        tcAGE.setCellValueFactory(new PropertyValueFactory<GetSetStudent, Integer>("ageStudent"));
-        tcEMAIL.setCellValueFactory(new PropertyValueFactory<GetSetStudent, String>("emailStudent"));
+//        List<Student> lsStudent = studentMethod.getAllStudent();
+//        userObservableList = FXCollections.observableArrayList();
+//        for (Student student : lsStudent){
+//            userObservableList.add(new GetSetStudent(student.getIdStudent(), student.getAgeStudent(), student.getNameStudent(), student.getEmailStudent()));
+//        }
+//
+//        tbUsers.setItems(userObservableList);
+//
+//        tcID.setCellValueFactory(new PropertyValueFactory<GetSetStudent, Long>("idStudent"));
+//        tcNAME.setCellValueFactory(new PropertyValueFactory<GetSetStudent, String>("nameStudent"));
+//        tcAGE.setCellValueFactory(new PropertyValueFactory<GetSetStudent, Integer>("ageStudent"));
+//        tcEMAIL.setCellValueFactory(new PropertyValueFactory<GetSetStudent, String>("emailStudent"));
 
     }
 
     public void pickTableItem(MouseEvent mouseEvent) {
-        tbUsers.setOnMouseClicked(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event){
-                tfID.setText(String.valueOf(tbUsers.getSelectionModel().getSelectedItem().getIdStudent()));
-                tfName.setText(tbUsers.getSelectionModel().getSelectedItem().getNameStudent());
-                tfAge.setText(String.valueOf(tbUsers.getSelectionModel().getSelectedItem().getAgeStudent()));
-                tfEmail.setText(tbUsers.getSelectionModel().getSelectedItem().getEmailStudent());
-            }
-        });
+//        tbUsers.setOnMouseClicked(new EventHandler<MouseEvent>(){
+//            @Override
+//            public void handle(MouseEvent event){
+//                tfID.setText(String.valueOf(tbUsers.getSelectionModel().getSelectedItem().getIdStudent()));
+//                tfName.setText(tbUsers.getSelectionModel().getSelectedItem().getNameStudent());
+//                tfAge.setText(String.valueOf(tbUsers.getSelectionModel().getSelectedItem().getAgeStudent()));
+//                tfEmail.setText(tbUsers.getSelectionModel().getSelectedItem().getEmailStudent());
+//            }
+//        });
     }
 
 }
