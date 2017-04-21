@@ -1,7 +1,7 @@
 package com.resud.controllers;
 
 import com.resud.alert.AlertBox;
-import com.resud.entity.StudentEntity;
+import com.resud.entity.Student;
 import com.resud.function.FunctionStudent;
 
 import javafx.collections.FXCollections;
@@ -45,7 +45,7 @@ public class ControllerStudent {
         if ((tfName.getText().trim().length() > 0)
                 && (tfAge.getText().trim().length() > 0)
                 && (tfEmail.getText().trim().length() > 0)) {
-            StudentEntity student = new StudentEntity();
+            Student student = new Student();
 //            student.setFirstName(tfName.getText());
 //            student.setAgeStudent(Integer.parseInt(tfAge.getText()));
 //            student.setEmailStudent(tfEmail.getText());

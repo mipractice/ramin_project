@@ -1,19 +1,19 @@
 package com.resud.controllers;
 
-import com.resud.entity.StudentEntity;
+import com.resud.entity.Student;
 
 import java.util.List;
 
 public interface StudentDAO {
 
-    StudentEntity getByIdStudent(long idStudent);
+    Student getByIdStudent(long idStudent);
 
-    StudentEntity addStudent(StudentEntity student);
+    Student addStudent(Student student);
 
-    void updateStudent(StudentEntity student);
+    void updateStudent(Student student);
 
     void deleteStudent(long idStudent);
 
-    List<StudentEntity> getAllStudent();
+    List<Student> getAllStudent();
 
 }

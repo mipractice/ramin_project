@@ -11,7 +11,7 @@ public class Region {
     private int id;
     private String name;
     private Collection<City> cities;
-
+    private Country country;
 
     @Id
     @Column(name = "id")
@@ -60,5 +60,15 @@ public class Region {
 
     public void setCities(Collection<City> cities) {
         this.cities = cities;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "country")
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
     }
 }

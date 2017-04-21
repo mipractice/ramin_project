@@ -1,9 +1,7 @@
 package com.resud.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by RRM on 20.04.17.
@@ -12,6 +10,7 @@ import javax.persistence.Id;
 public class Country {
     private int id;
     private String name;
+    private Collection<Region> regions;
 
     @Id
     @Column(name = "id")
@@ -52,4 +51,14 @@ public class Country {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
+
+    @OneToMany(mappedBy = "country")
+    public Collection<Region> getRegions() {
+        return regions;
+    }
+
+    public void setRegions(Collection<Region> regions) {
+        this.regions = regions;
+    }
+
 }

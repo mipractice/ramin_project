@@ -1,6 +1,7 @@
 package com.resud.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by RRM on 20.04.17.
@@ -10,6 +11,7 @@ public class City {
     private int id;
     private String name;
     private Region region;
+    private Collection<Student> students;
 
     @Id
     @Column(name = "id")
@@ -59,5 +61,15 @@ public class City {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    @OneToMany(mappedBy = "city")
+
+    public Collection<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Collection<Student> students) {
+        this.students = students;
     }
 }

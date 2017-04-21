@@ -1,9 +1,6 @@
 package com.resud.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
@@ -18,6 +15,7 @@ public class Student {
     private int id;
     private String firstname;
     private String surname;
+    private City city;
 
     @Basic
     @Column(name = "gender")
@@ -117,5 +115,15 @@ public class Student {
         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "city")
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 }
