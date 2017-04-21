@@ -12,6 +12,7 @@ public class Region {
     private String name;
     private Collection<City> cities;
 
+
     @Id
     @Column(name = "id")
     public int getId() {
@@ -52,7 +53,6 @@ public class Region {
         return result;
     }
 
-
     @OneToMany(mappedBy = "region")
     public Collection<City> getCities() {
         return cities;
@@ -61,6 +61,4 @@ public class Region {
     public void setCities(Collection<City> cities) {
         this.cities = cities;
     }
-
-
 }

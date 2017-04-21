@@ -1,41 +1,23 @@
 package com.resud.entity;
 
-import javax.persistence.*;
-import java.sql.Timestamp;
-import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.sql.Date;
 
 /**
  * Created by RRM on 20.04.17.
  */
 @Entity
 public class Student {
-    private String firstName;
-    private String secondName;
     private String gender;
-    private Timestamp birthday;
+    private Date birthday;
     private String phone;
     private String address;
     private int id;
-
-    @Basic
-    @Column(name = "first_name")
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    @Basic
-    @Column(name = "second_name")
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
+    private String firstname;
+    private String surname;
 
     @Basic
     @Column(name = "gender")
@@ -49,11 +31,11 @@ public class Student {
 
     @Basic
     @Column(name = "birthday")
-    public Timestamp getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Timestamp birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 
@@ -87,6 +69,26 @@ public class Student {
         this.id = id;
     }
 
+    @Basic
+    @Column(name = "firstname")
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    @Basic
+    @Column(name = "surname")
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -95,28 +97,25 @@ public class Student {
         Student student = (Student) o;
 
         if (id != student.id) return false;
-        if (firstName != null ? !firstName.equals(student.firstName) : student.firstName != null) return false;
-        if (secondName != null ? !secondName.equals(student.secondName) : student.secondName != null) return false;
         if (gender != null ? !gender.equals(student.gender) : student.gender != null) return false;
         if (birthday != null ? !birthday.equals(student.birthday) : student.birthday != null) return false;
         if (phone != null ? !phone.equals(student.phone) : student.phone != null) return false;
         if (address != null ? !address.equals(student.address) : student.address != null) return false;
+        if (firstname != null ? !firstname.equals(student.firstname) : student.firstname != null) return false;
+        if (surname != null ? !surname.equals(student.surname) : student.surname != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = firstName != null ? firstName.hashCode() : 0;
-        result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
-        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        int result = gender != null ? gender.hashCode() : 0;
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + id;
+        result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
         return result;
     }
-
-
-
 }

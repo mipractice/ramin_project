@@ -1,6 +1,9 @@
 package com.resud.entity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created by RRM on 20.04.17.
@@ -49,5 +52,4 @@ public class Country {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
-
 }
