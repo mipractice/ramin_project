@@ -12,7 +12,7 @@ public interface StudentService {
 
     void update(Student student);
 
-    void delete(long id);
+    void delete(long idStudent);
 
     List<Student> getAll();
 
