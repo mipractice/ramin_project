@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `Project`.`region` (
   `country` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_region_country_idx` (`country` ASC),
-  CONSTRAINT `fk_region_rountry`
+  CONSTRAINT `fk_region_сountry`
   FOREIGN KEY (`country`)
   REFERENCES `Project`.`country` (`id`)
     ON DELETE NO ACTION

@@ -1,12 +1,11 @@
-package com.resud.entity;
+package com.rr.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
 
-/**
- * Created by RRM on 20.04.17.
- */
 @Entity
+@Table(name = "student", schema = "Project")
+@NamedQuery(name = "Student.getAll", query = "SELECT c from Student c")
 public class Student {
     private String gender;
     private Date birthday;
@@ -125,5 +124,12 @@ public class Student {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Студент №: " + id + " [ " + surname + " " + firstname + " Пол: " + gender +
+                " Дата рождения: " + birthday + " Адрес: " + address + " Номер телефона: " + phone + " Город: " + city + "]";
     }
 }

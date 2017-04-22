@@ -1,4 +1,4 @@
-package com.resud.alert;
+package com.rr.alert;
 
 import javafx.scene.control.Alert;
 

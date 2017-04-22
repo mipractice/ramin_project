@@ -1,16 +1,15 @@
-package com.resud.entity;
+package com.rr.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
 
-/**
- * Created by RRM on 20.04.17.
- */
 @Entity
-public class Country {
+@Table(name = "city", schema = "Project")
+public class City {
     private int id;
     private String name;
-    private Collection<Region> regions;
+    private Region region;
+    private Collection<Student> students;
 
     @Id
     @Column(name = "id")
@@ -37,10 +36,10 @@ public class Country {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Country country = (Country) o;
+        City city = (City) o;
 
-        if (id != country.id) return false;
-        if (name != null ? !name.equals(country.name) : country.name != null) return false;
+        if (id != city.id) return false;
+        if (name != null ? !name.equals(city.name) : city.name != null) return false;
 
         return true;
     }
@@ -52,13 +51,23 @@ public class Country {
         return result;
     }
 
-    @OneToMany(mappedBy = "country")
-    public Collection<Region> getRegions() {
-        return regions;
+    @ManyToOne
+    @JoinColumn(name = "region")
+    public Region getRegion() {
+        return region;
     }
 
-    public void setRegions(Collection<Region> regions) {
-        this.regions = regions;
+    public void setRegion(Region region) {
+        this.region = region;
     }
 
+    @OneToMany(mappedBy = "city")
+
+    public Collection<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Collection<Student> students) {
+        this.students = students;
+    }
 }

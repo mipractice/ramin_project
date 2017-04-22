@@ -1,22 +1,20 @@
-package com.resud.controllers;
+package com.rr.controller;
 
-import com.resud.alert.AlertBox;
-import com.resud.entity.Student;
-import com.resud.function.FunctionStudent;
-
-import javafx.collections.FXCollections;
+import com.rr.alert.AlertBox;
+import com.rr.entity.Student;
+import com.rr.function.FunctionStudent;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import java.util.List;
 
-public class ControllerStudent {
+/**
+ * Created by RRM on 22.04.17.
+ */
+public class ConBeta {
 
     @FXML
     private TextField tfID;
@@ -42,28 +40,28 @@ public class ControllerStudent {
     private FunctionStudent studentMethod = new FunctionStudent();
 
     public void insertDB(ActionEvent actionEvent) {
-        if ((tfName.getText().trim().length() > 0)
-                && (tfAge.getText().trim().length() > 0)
-                && (tfEmail.getText().trim().length() > 0)) {
-            Student student = new Student();
-//            student.setFirstName(tfName.getText());
-//            student.setAgeStudent(Integer.parseInt(tfAge.getText()));
-//            student.setEmailStudent(tfEmail.getText());
-            studentMethod.addStudent(student);
-            alertBox.Info("Поздравляю!", tfName.getText() + " успешно добавлен в БД!", null);
-        } else {
-            alertBox.Warning("Предупреждение!", "Поле ID является не обязательным.", "Не все поля заполнены!");
-        }
+//        if ((tfName.getText().trim().length() > 0)
+//                && (tfAge.getText().trim().length() > 0)
+//                && (tfEmail.getText().trim().length() > 0)) {
+//            Student student = new Student();
+////            student.setFirstName(tfName.getText());
+////            student.setAgeStudent(Integer.parseInt(tfAge.getText()));
+////            student.setEmailStudent(tfEmail.getText());
+//            studentMethod.addStudent(student);
+//            alertBox.Info("Поздравляю!", tfName.getText() + " успешно добавлен в БД!", null);
+//        } else {
+//            alertBox.Warning("Предупреждение!", "Поле ID является не обязательным.", "Не все поля заполнены!");
+//        }
     }
 
     public void deleteDB(ActionEvent actionEvent) {
-
-        if (tfID.getText().trim().length() > 0) {
-            studentMethod.deleteStudent(Integer.parseInt(tfID.getText()));
-            alertBox.Info("Поздравляю!", "Пользователь под # " + tfID.getText() + ". был удален из БД!", null);
-        } else {
-            alertBox.Warning("Предупреждение!", "Поле ID является обязательным.", "Удаление происходит по выбору порядкового номера (ID)!");
-        }
+//
+//        if (tfID.getText().trim().length() > 0) {
+//            studentMethod.deleteStudent(Integer.parseInt(tfID.getText()));
+//            alertBox.Info("Поздравляю!", "Пользователь под # " + tfID.getText() + ". был удален из БД!", null);
+//        } else {
+//            alertBox.Warning("Предупреждение!", "Поле ID является обязательным.", "Удаление происходит по выбору порядкового номера (ID)!");
+//        }
     }
 
     public void updateDB(ActionEvent actionEvent) {

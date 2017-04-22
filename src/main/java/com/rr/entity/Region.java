@@ -1,12 +1,10 @@
-package com.resud.entity;
+package com.rr.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
 
-/**
- * Created by RRM on 20.04.17.
- */
 @Entity
+@Table(name = "region", schema = "Project")
 public class Region {
     private int id;
     private String name;
@@ -71,4 +69,6 @@ public class Region {
     public void setCountry(Country country) {
         this.country = country;
     }
+
+
 }

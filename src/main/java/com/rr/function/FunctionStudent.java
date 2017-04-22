@@ -1,7 +1,7 @@
-package com.resud.function;
+package com.rr.function;
 
-import com.resud.controllers.StudentService;
-import com.resud.entity.Student;
+import com.rr.service.StudentService;
+import com.rr.entity.Student;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -12,36 +12,35 @@ public class FunctionStudent implements StudentService{
     private EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
 
     @Override
-    public Student getByIdStudent(long idStudent) {
-        return entityManager.find(Student.class, idStudent);
-    }
-
-    public Student addStudent(Student student) {
-        entityManager.getTransaction().begin();
-        Student studentAddDB = entityManager.merge(student);
-        entityManager.getTransaction().commit();
-        return studentAddDB;
+    public Student getById(long id) {
+        return entityManager.find(Student.class, id);
     }
 
     @Override
-    public void updateStudent(Student student) {
+    public Student add(Student student) {
+        entityManager.getTransaction().begin();
+        Student studentAdd = entityManager.merge(student);
+        entityManager.getTransaction().commit();
+        return studentAdd;
+    }
+
+    @Override
+    public void update(Student student) {
         entityManager.getTransaction().begin();
         entityManager.merge(student);
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public void deleteStudent(long idStudent){
+    public void delete(long id) {
         entityManager.getTransaction().begin();
-        entityManager.remove(getByIdStudent(idStudent));
+        entityManager.remove(getById(id));
         entityManager.getTransaction().commit();
     }
 
     @Override
-    public List<Student> getAllStudent(){
-        //TypedQuery<Student> studentTypedQuery = entityManager.createNamedQuery("Student.getAll", Student.class);
-        //return studentTypedQuery.getResultList();
-
-        return null;
+    public List<Student> getAll() {
+        TypedQuery<Student> studentTypedQuery = entityManager.createNamedQuery("Student.getAll", Student.class);
+        return studentTypedQuery.getResultList();
     }
 }
