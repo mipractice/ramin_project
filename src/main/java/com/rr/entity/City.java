@@ -31,6 +31,13 @@ public class City {
         this.name = name;
     }
 
+    public City() {}
+
+    public City(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -69,5 +76,10 @@ public class City {
 
     public void setStudents(Collection<Student> students) {
         this.students = students;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
