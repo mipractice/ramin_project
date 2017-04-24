@@ -1,7 +1,7 @@
 package com.rr.function;
 
 import com.rr.service.StudentService;
-import com.rr.entity.Student;
+import com.rr.model.Student;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;

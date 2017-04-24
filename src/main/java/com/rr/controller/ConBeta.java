@@ -1,7 +1,6 @@
 package com.rr.controller;
 
 import com.rr.alert.AlertBox;
-import com.rr.entity.Student;
 import com.rr.function.FunctionStudent;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

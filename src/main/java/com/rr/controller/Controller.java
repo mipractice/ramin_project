@@ -1,15 +1,12 @@
 package com.rr.controller;
 
-import com.rr.entity.City;
-import com.rr.entity.Student;
+import com.rr.model.City;
+import com.rr.service.impl.CityImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import sun.util.resources.LocaleData;
 
-import java.sql.Date;
-import java.util.Calendar;
-import java.util.Locale;
+import java.util.List;
 
 public class Controller {
 
@@ -22,13 +19,16 @@ public class Controller {
     @FXML
     private DatePicker fxBirthday;
 
+    private CityImpl ciyImpl = new CityImpl();
+    private List<City> listCity = ciyImpl.getAll();
+
     @FXML
     private void initialize() {
-//        fxCity.getItems().add(new City(1, "Москва"));
-//        fxCity.getItems().add(new City(2, "Улан-Удэ"));
-//        fxCity.getItems().add(new City(3, "Иркутск"));
-
         fxGender.getItems().addAll("Мужской", "Женский");
+        for (City city: listCity) {
+            fxCity.getItems().add(new City(city.getId(), city.getName()));
+        }
+        loadTableStudent();
     }
 
 
@@ -67,7 +67,7 @@ public class Controller {
 //        student1.setAddress(fxAddress.getText());
 //        student1.setPhone(fxPhone.getText());
 //        student1.setCity(new City(fxCity.getSelectionModel().getSelectedItem().getId(), fxCity.getSelectionModel().getSelectedItem().getName()));
-//        System.out.println("# - " + fxCity.getSelectionModel().getSelectedItem().getId());
+        System.out.println("# - " + fxCity.getSelectionModel().getSelectedItem().getId());
 //
 //
 //        System.out.println(student1);

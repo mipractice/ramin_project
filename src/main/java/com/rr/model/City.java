@@ -1,10 +1,11 @@
-package com.rr.entity;
+package com.rr.model;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
 @Table(name = "city", schema = "Project")
+@NamedQuery(name = "City.getAll", query = "SELECT c from City c")
 public class City {
     private int id;
     private String name;
@@ -31,31 +32,12 @@ public class City {
         this.name = name;
     }
 
-    public City() {}
+    public City() {
+    }
 
     public City(int id, String name) {
         this.id = id;
         this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        City city = (City) o;
-
-        if (id != city.id) return false;
-        if (name != null ? !name.equals(city.name) : city.name != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
     }
 
     @ManyToOne
@@ -76,6 +58,26 @@ public class City {
 
     public void setStudents(Collection<Student> students) {
         this.students = students;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        City city = (City) o;
+
+        if (id != city.id) return false;
+        if (name != null ? !name.equals(city.name) : city.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        return result;
     }
 
     @Override

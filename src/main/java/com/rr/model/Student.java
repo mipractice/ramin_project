@@ -1,4 +1,4 @@
-package com.rr.entity;
+package com.rr.model;
 
 import javax.persistence.*;
 import java.sql.Date;

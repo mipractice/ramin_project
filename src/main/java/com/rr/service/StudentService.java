@@ -1,6 +1,6 @@
 package com.rr.service;
 
-import com.rr.entity.Student;
+import com.rr.model.Student;
 
 import java.util.List;
 
@@ -15,5 +15,4 @@ public interface StudentService {
     void delete(long idStudent);
 
     List<Student> getAll();
-
 }
