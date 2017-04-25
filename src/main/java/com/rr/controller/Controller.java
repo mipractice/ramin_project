@@ -48,11 +48,11 @@ public class Controller {
         for (City city : listCity) {
             fxCity.getItems().add(new City(city.getId(), city.getName()));
         }
-        loadTableStudent();
+        loadStudent();
     }
 
 
-    public void loadTableStudent() {
+    public void loadStudent() {
         for (Student student : listStudent) {
             studentObservableList.add(new Student(
                     student.getGender(),
