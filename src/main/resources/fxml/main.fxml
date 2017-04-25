@@ -12,9 +12,9 @@
                 <Button mnemonicParsing="false" onAction="#update" prefHeight="27.0" prefWidth="140.0" text="Обновить" />
                 <Button mnemonicParsing="false" onAction="#delete" prefHeight="27.0" prefWidth="140.0" text="Удалить" />
                 <Button mnemonicParsing="false" onAction="#print" prefHeight="27.0" prefWidth="140.0" text="Вывести" />
-                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="132.0" text="Страна" />
-                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="132.0" text="Регион" />
-                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="132.0" text="Город" />
+                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="132.0" text="Страна" onAction="#country"/>
+                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="132.0" text="Регион" onAction="#region"/>
+                <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="132.0" text="Город" onAction="#city"/>
             </items>
         </ToolBar>
         <SplitPane dividerPositions="0.3" prefHeight="560.0" prefWidth="1000.0">

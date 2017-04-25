@@ -10,15 +10,20 @@ import javafx.collections.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.converter.LocalDateStringConverter;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.List;
 
 public class Controller {
@@ -138,5 +143,27 @@ public class Controller {
                 fxPhone.setText(String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getPhone()));
             }
         });
+    }
+
+    public void country(ActionEvent actionEvent) {
+    }
+
+    public void city(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+
+            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/city.fxml"));
+            stage.setTitle("CRUD App");
+            stage.setScene(new Scene(parent, 600, 400));
+            stage.setResizable(false);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void region(ActionEvent actionEvent) {
     }
 }
