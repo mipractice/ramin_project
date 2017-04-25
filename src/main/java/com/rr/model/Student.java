@@ -143,7 +143,14 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Студент №: " + id + " [ " + surname + " " + firstname + " Пол: " + gender +
-                " Дата рождения: " + birthday + " Адрес: " + address + " Номер телефона: " + phone + " Город: " + city + "]";
+        return "Студент №: " + id + "." +
+                "\n\t\t\t{" +
+                "\n\t\t\t\tФИО: " + surname + " " + firstname +
+                "\n\t\t\t\tПол: " + gender +
+                "\n\t\t\t\tДата рождения: " + birthday +
+                "\n\t\t\t\tАдрес: " + address +
+                "\n\t\t\t\tНомер телефона: " + phone +
+                "\n\t\t\t\tГород: " + city +
+                "\n\t\t\t}";
     }
 }
