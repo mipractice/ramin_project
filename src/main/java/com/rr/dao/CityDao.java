@@ -1,10 +1,10 @@
-package com.rr.service;
+package com.rr.dao;
 
 import com.rr.model.City;
 
 import java.util.List;
 
-public interface CityService {
+public interface CityDao {
     City getById(long id);
 
     City add(City city);

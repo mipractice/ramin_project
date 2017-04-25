@@ -1,6 +1,6 @@
-package com.rr.function;
+package com.rr.dao.impl;
 
-import com.rr.service.StudentService;
+import com.rr.dao.StudentDao;
 import com.rr.model.Student;
 
 import javax.persistence.EntityManager;
@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class FunctionStudent implements StudentService{
+public class StudentImpl implements StudentDao {
     private EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
 
     @Override
@@ -19,9 +19,9 @@ public class FunctionStudent implements StudentService{
     @Override
     public Student add(Student student) {
         entityManager.getTransaction().begin();
-        Student studentAdd = entityManager.merge(student);
+        Student addStudent = entityManager.merge(student);
         entityManager.getTransaction().commit();
-        return studentAdd;
+        return addStudent;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.rr.controller;
 
 import com.rr.alert.AlertBox;
-import com.rr.function.FunctionStudent;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -75,9 +74,9 @@ public class ConBeta {
 //
 //            studentMethod.updateStudent(student);
 
-            alertBox.Info("Поздравляю!", "Пользователь был изменен.", null);
+            alertBox.setAlertInfo("Поздравляю!", "Пользователь был изменен.", null);
         } else {
-            alertBox.Warning("Предупреждение!", "Поле ID является не обязательным.", "Не все поля заполнены!");
+            alertBox.setAlertWarning("Предупреждение!", "Поле ID является не обязательным.", "Не все поля заполнены!");
         }
     }
 

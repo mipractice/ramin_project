@@ -43,16 +43,16 @@
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                     <children>
-                        <TableView layoutY="-2.0" prefHeight="560.0" prefWidth="695.0">
+                        <TableView layoutY="-2.0" prefHeight="560.0" prefWidth="695.0" fx:id="tbStudent">
                             <columns>
-                                <TableColumn prefWidth="40.0" text="№"/>
-                                <TableColumn prefWidth="110.0" text="Фамилия"/>
-                                <TableColumn prefWidth="110.0" text="Имя"/>
-                                <TableColumn prefWidth="86.0" text="Пол"/>
-                                <TableColumn prefWidth="110.0" text="Дата рождения"/>
-                                <TableColumn minWidth="4.0" text="Город"/>
-                                <TableColumn minWidth="4.0" prefWidth="83.0" text="Адрес"/>
-                                <TableColumn minWidth="4.0" prefWidth="75.0" text="Телефон"/>
+                                <TableColumn prefWidth="40.0" text="№" fx:id="tcId"/>
+                                <TableColumn prefWidth="110.0" text="Фамилия" fx:id="tcSurname"/>
+                                <TableColumn prefWidth="110.0" text="Имя" fx:id="tcName"/>
+                                <TableColumn prefWidth="86.0" text="Пол" fx:id="tcGender"/>
+                                <TableColumn prefWidth="110.0" text="Дата рождения" fx:id="tcBirthday"/>
+                                <TableColumn minWidth="4.0" text="Город" fx:id="tcCity"/>
+                                <TableColumn minWidth="4.0" prefWidth="83.0" text="Адрес" fx:id="tcAddress"/>
+                                <TableColumn minWidth="4.0" prefWidth="75.0" text="Телефон" fx:id="tcPhone"/>
                             </columns>
                         </TableView>
                     </children>

@@ -4,9 +4,6 @@ import org.hibernate.criterion.DetachedCriteria;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by RRM on 24.04.17.
- */
 public interface DAO<T> {
 
     public List<T> getAll();

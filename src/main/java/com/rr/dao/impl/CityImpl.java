@@ -1,15 +1,13 @@
-package com.rr.service.impl;
+package com.rr.dao.impl;
 
 import com.rr.model.City;
-import com.rr.service.CityService;
+import com.rr.dao.CityDao;
 
 import javax.persistence.*;
 import java.util.List;
 
-public class CityImpl implements CityService {
+public class CityImpl implements CityDao {
     private EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
-
-
 
     @Override
     public City getById(long id) {

@@ -86,6 +86,20 @@ public class Student {
         this.surname = surname;
     }
 
+    public Student() {
+    }
+
+    public Student(String gender, Date birthday, String phone, String address, int id, String firstname, String surname, City city) {
+        this.gender = gender;
+        this.birthday = birthday;
+        this.phone = phone;
+        this.address = address;
+        this.id = id;
+        this.firstname = firstname;
+        this.surname = surname;
+        this.city = city;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

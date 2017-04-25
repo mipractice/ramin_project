@@ -1,11 +1,18 @@
 package com.rr.controller;
 
+import com.rr.dao.impl.StudentImpl;
 import com.rr.model.City;
-import com.rr.service.impl.CityImpl;
+import com.rr.dao.impl.CityImpl;
+import com.rr.model.Student;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.Date;
 import java.util.List;
 
 public class Controller {
@@ -18,14 +25,27 @@ public class Controller {
     private ComboBox<City> fxCity;
     @FXML
     private DatePicker fxBirthday;
+    @FXML
+    private TableView<Student> tbStudent;
+    @FXML
+    private TableColumn<Student, Long> tcId;
+    @FXML
+    private TableColumn<Student, String> tcSurname, tcName, tcGender, tcAddress, tcPhone;
+    @FXML
+    private TableColumn<Student, Date> tcBirthday;
+    @FXML
+    private TableColumn<Student, Integer> tcCity;
 
     private CityImpl ciyImpl = new CityImpl();
+    private StudentImpl studentImpl = new StudentImpl();
     private List<City> listCity = ciyImpl.getAll();
+    private List<Student> listStudent = studentImpl.getAll();
+    private ObservableList<Student> studentObservableList = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
         fxGender.getItems().addAll("Мужской", "Женский");
-        for (City city: listCity) {
+        for (City city : listCity) {
             fxCity.getItems().add(new City(city.getId(), city.getName()));
         }
         loadTableStudent();
@@ -33,7 +53,29 @@ public class Controller {
 
 
     public void loadTableStudent() {
-        System.out.println("Будет загружаться таблица с этого метода!");
+        for (Student student : listStudent) {
+            studentObservableList.add(new Student(
+                    student.getGender(),
+                    student.getBirthday(),
+                    student.getPhone(),
+                    student.getAddress(),
+                    student.getId(),
+                    student.getFirstname(),
+                    student.getSurname(),
+                    student.getCity()
+            ));
+            System.out.println(student);
+        }
+        tbStudent.setItems(studentObservableList);
+
+        tcId.setCellValueFactory(new PropertyValueFactory<Student, Long>("id"));
+        tcSurname.setCellValueFactory(new PropertyValueFactory<Student, String>("surname"));
+        tcName.setCellValueFactory(new PropertyValueFactory<Student, String>("firstname"));
+        tcGender.setCellValueFactory(new PropertyValueFactory<Student, String>("gender"));
+        tcBirthday.setCellValueFactory(new PropertyValueFactory<Student, Date>("birthday"));
+        tcCity.setCellValueFactory(new PropertyValueFactory<Student, Integer>("city"));
+        tcAddress.setCellValueFactory(new PropertyValueFactory<Student, String>("address"));
+        tcPhone.setCellValueFactory(new PropertyValueFactory<Student, String>("phone"));
     }
 
 
@@ -48,28 +90,7 @@ public class Controller {
     }
 
     public void print(ActionEvent actionEvent) {
-//        Student student = new Student();
-//        student.setFirstname("Рамин");
-//        student.setSurname("Расули");
-//        student.setGender("Мужской");
-//        student.setBirthday(new Date(2012, 01, 24));
-//        student.setAddress("Рылеева 3 16");
-//        student.setPhone("+7(950) 386-34-44");
-//        student.setCity(new City(1, "Улан-Удэ"));
-//
-//        System.out.println(student);
-
-//        Student student1 = new Student();
-//        student1.setFirstname(fxFirstname.getText());
-//        student1.setSurname(fxSurname.getText());
-//        student1.setGender(fxGender.getSelectionModel().getSelectedItem());
-//        student1.setBirthday(new Date(1994, 01, 24));
-//        student1.setAddress(fxAddress.getText());
-//        student1.setPhone(fxPhone.getText());
-//        student1.setCity(new City(fxCity.getSelectionModel().getSelectedItem().getId(), fxCity.getSelectionModel().getSelectedItem().getName()));
-        System.out.println("# - " + fxCity.getSelectionModel().getSelectedItem().getId());
-//
-//
-//        System.out.println(student1);
+//        System.out.println("# - " + fxCity.getSelectionModel().getSelectedItem().getId());q
     }
+
 }

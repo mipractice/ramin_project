@@ -1,10 +1,10 @@
-package com.rr.service;
+package com.rr.dao;
 
 import com.rr.model.Student;
 
 import java.util.List;
 
-public interface StudentService {
+public interface StudentDao {
 
     Student getById(long id);
 
@@ -12,7 +12,7 @@ public interface StudentService {
 
     void update(Student student);
 
-    void delete(long idStudent);
+    void delete(long id);
 
     List<Student> getAll();
 }
