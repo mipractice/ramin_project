@@ -8,12 +8,14 @@ import java.util.List;
 
 public class CityImpl<T> implements Dao<T> {
     @PersistenceContext
-    protected EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
-    protected Class<T> City;
+    private EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
+    private Class<T> City;
 
     @Override
     public T getById(int id) {
-        return entityManager.find(City, id);
+        TypedQuery<T> findCity = this.entityManager.createNamedQuery("City.find", City);
+        findCity.setParameter("id", id);
+        return findCity.getSingleResult();
     }
 
     @Override

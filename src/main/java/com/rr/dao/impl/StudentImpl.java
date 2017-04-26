@@ -9,8 +9,8 @@ import java.util.List;
 
 public class StudentImpl<T> implements Dao<T> {
     @PersistenceContext
-    protected EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
-    protected Class<T> Student;
+    private EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
+    private Class<T> Student;
 
     @Override
     public T getById(int id) {

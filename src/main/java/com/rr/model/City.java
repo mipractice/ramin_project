@@ -5,7 +5,11 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "city", schema = "Project")
-@NamedQuery(name = "City.getAll", query = "SELECT c from City c")
+
+@NamedQueries({
+        @NamedQuery(name = "City.getAll", query = "SELECT c from City c"),
+        @NamedQuery(name = "City.find", query = "SELECT c from City c WHERE c.id = :id")
+})
 public class City {
     private int id;
     private String name;
