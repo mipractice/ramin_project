@@ -1,31 +1,33 @@
 package com.rr.dao.impl;
 
+import com.rr.dao.Dao;
 import com.rr.model.City;
-import com.rr.dao.CityDao;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
-public class CityImpl implements CityDao {
+public class CityImpl<T, PK extends Serializable> implements Dao<City> {
     private EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
 
+
     @Override
-    public City getById(long id) {
+    public City get(long id) {
         return null;
     }
 
     @Override
-    public City add(City city) {
+    public City add(City domain) {
         return null;
     }
 
     @Override
-    public void update(City city) {
+    public void update(City domain) {
 
     }
 
     @Override
-    public void delete(City city) {
+    public void delete(long id) {
 
     }
 

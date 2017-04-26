@@ -10,7 +10,7 @@ public interface Dao<T> {
 
     void update(T domain);
 
-    void delete(T domain);
+    void delete(long id);
 
     List<T> getAll();
 

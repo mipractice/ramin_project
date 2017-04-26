@@ -44,11 +44,10 @@ public class Controller {
     private TableColumn<Student, Integer> tcCity;
 
     private AlertBox alert = new AlertBox();
-   // private CityImpl ciyImpl = new CityImpl();
-//    private full ciyImpl = new full();
+    private CityImpl ciyImpl = new CityImpl();
     private StudentImpl studentImpl = new StudentImpl();
 
-//    private List<City> listCity = ciyImpl.getAll();
+    private List<City> listCity = ciyImpl.getAll();
     private List<Student> listStudent;
     private ObservableList<Student> studentObservableList;
 
@@ -57,9 +56,9 @@ public class Controller {
         LocalDate defualtDate = LocalDate.parse("1990-01-01");
         fxBirthday.setValue(defualtDate);
         fxGender.getItems().addAll("Мужской", "Женский");
-//        for (City city : listCity) {
-//            fxCity.getItems().add(new City(city.getId(), city.getName()));
-//        }
+        for (City city : listCity) {
+            fxCity.getItems().add(new City(city.getId(), city.getName()));
+        }
         loadStudent();
     }
 
