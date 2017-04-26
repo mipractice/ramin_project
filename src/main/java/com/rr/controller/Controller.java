@@ -11,15 +11,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.*;
+import javafx.stage.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.util.converter.LocalDateStringConverter;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -48,10 +44,11 @@ public class Controller {
     private TableColumn<Student, Integer> tcCity;
 
     private AlertBox alert = new AlertBox();
-    private CityImpl ciyImpl = new CityImpl();
+   // private CityImpl ciyImpl = new CityImpl();
+//    private full ciyImpl = new full();
     private StudentImpl studentImpl = new StudentImpl();
 
-    private List<City> listCity = ciyImpl.getAll();
+//    private List<City> listCity = ciyImpl.getAll();
     private List<Student> listStudent;
     private ObservableList<Student> studentObservableList;
 
@@ -60,16 +57,15 @@ public class Controller {
         LocalDate defualtDate = LocalDate.parse("1990-01-01");
         fxBirthday.setValue(defualtDate);
         fxGender.getItems().addAll("Мужской", "Женский");
-        for (City city : listCity) {
-            fxCity.getItems().add(new City(city.getId(), city.getName()));
-        }
+//        for (City city : listCity) {
+//            fxCity.getItems().add(new City(city.getId(), city.getName()));
+//        }
         loadStudent();
     }
 
     public void loadStudent() {
         listStudent = studentImpl.getAll();
         studentObservableList = FXCollections.observableArrayList();
-
 
         tbStudent.setItems(null);
         for (Student student : listStudent) {
@@ -83,7 +79,6 @@ public class Controller {
                     student.getSurname(),
                     student.getCity()
             ));
-            System.out.println(student);
         }
         tbStudent.setItems(studentObservableList);
 
@@ -96,7 +91,6 @@ public class Controller {
         tcAddress.setCellValueFactory(new PropertyValueFactory<Student, String>("address"));
         tcPhone.setCellValueFactory(new PropertyValueFactory<Student, String>("phone"));
     }
-
 
     public void add(ActionEvent actionEvent) {
         Student student = new Student();
@@ -112,8 +106,6 @@ public class Controller {
         student.setCity(new City(fxCity.getSelectionModel().getSelectedItem().getId()));
 
         studentImpl.add(student);
-
-        System.out.println(student);
 
     }
 
@@ -138,7 +130,7 @@ public class Controller {
                 fxSurname.setText(String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getSurname()));
                 //fxGender.
                 //fxBirthday.setValue(tbStudent.getSelectionModel().getSelectedItem().getBirthday());
-                //fxCity.
+                //fxCity.setValue(new City(tbStudent.getSelectionModel().getSelectedItem().getCity().getName()));
                 fxAddress.setText(String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getAddress()));
                 fxPhone.setText(String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getPhone()));
             }
@@ -146,15 +138,12 @@ public class Controller {
     }
 
     public void country(ActionEvent actionEvent) {
-    }
-
-    public void city(ActionEvent actionEvent) {
         try {
             Stage stage = new Stage();
 
-            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/city.fxml"));
-            stage.setTitle("CRUD App");
-            stage.setScene(new Scene(parent, 600, 400));
+            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/country.fxml"));
+            stage.setTitle("Страна");
+            stage.setScene(new Scene(parent, 430, 400));
             stage.setResizable(false);
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
@@ -165,5 +154,34 @@ public class Controller {
     }
 
     public void region(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+
+            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/region.fxml"));
+            stage.setTitle("Регион");
+            stage.setScene(new Scene(parent, 600, 400));
+            stage.setResizable(false);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void city(ActionEvent actionEvent) {
+        try {
+            Stage stage = new Stage();
+
+            Parent parent = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/city.fxml"));
+            stage.setTitle("Город");
+            stage.setScene(new Scene(parent, 600, 400));
+            stage.setResizable(false);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initOwner(((Node) actionEvent.getSource()).getScene().getWindow());
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }

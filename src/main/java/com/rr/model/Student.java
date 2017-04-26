@@ -5,7 +5,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "student", schema = "Project")
-@NamedQuery(name = "Student.getAll", query = "SELECT c from Student c")
+@NamedQuery(name = "Student.getAll", query = "SELECT s from Student s")
 public class Student {
     private String gender;
     private Date birthday;
