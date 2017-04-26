@@ -53,7 +53,7 @@ public class Controller {
 
     @FXML
     private void initialize() {
-        LocalDate defualtDate = LocalDate.parse("1990-01-01");
+        LocalDate defualtDate = LocalDate.parse("1992-01-01");
         fxBirthday.setValue(defualtDate);
         fxGender.getItems().addAll("Мужской", "Женский");
         for (City city : listCity) {
@@ -109,15 +109,26 @@ public class Controller {
     }
 
     public void update(ActionEvent actionEvent) {
+        Student student = (Student) studentImpl.getById(Integer.parseInt(fxId.getText()));
+        student.setFirstname(fxFirstname.getText());
+        student.setSurname(fxSurname.getText());
+        student.setGender(fxGender.getSelectionModel().getSelectedItem());
+        student.setBirthday(new Date(fxBirthday.getValue().getYear() - 1900,
+                fxBirthday.getValue().getMonthValue() - 1,
+                fxBirthday.getValue().getDayOfMonth()));
+        student.setAddress(fxAddress.getText());
+        student.setPhone(fxPhone.getText());
+        student.setCity(new City(fxCity.getSelectionModel().getSelectedItem().getId()));
+
+        studentImpl.update(student);
     }
 
     public void delete(ActionEvent actionEvent) {
+        studentImpl.delete(Integer.parseInt(fxId.getText()));
     }
 
     public void print(ActionEvent actionEvent) {
         loadStudent();
-
-//        System.out.println("# - " + fxCity.getSelectionModel().getSelectedItem().getId());q
     }
 
     public void pick(MouseEvent mouseEvent) {

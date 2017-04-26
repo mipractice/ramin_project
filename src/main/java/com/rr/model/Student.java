@@ -5,7 +5,10 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "student", schema = "Project")
-@NamedQuery(name = "Student.getAll", query = "SELECT s from Student s")
+@NamedQueries({
+        @NamedQuery(name = "Student.getAll", query = "SELECT s from Student s"),
+        @NamedQuery(name = "Student.find", query = "SELECT s FROM Student s WHERE s.id = :id")
+})
 public class Student {
     private String gender;
     private Date birthday;

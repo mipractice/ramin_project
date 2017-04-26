@@ -1,22 +1,19 @@
 package com.rr.dao.impl;
 
 import com.rr.dao.Dao;
-import com.rr.model.Student;
 
 import javax.persistence.*;
-import java.lang.reflect.ParameterizedType;
+import java.io.Serializable;
 import java.util.List;
 
-public class StudentImpl<T> implements Dao<T> {
+public class CountryImpl<T> implements Dao<T> {
     @PersistenceContext
     protected EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
-    protected Class<T> Student;
+    protected Class<T> Country;
 
     @Override
     public T getById(int id) {
-        TypedQuery<T> findStudent= this.entityManager.createNamedQuery("Student.find", Student);
-        findStudent.setParameter("id", id);
-        return findStudent.getSingleResult();
+        return entityManager.find(Country, id);
     }
 
     @Override
@@ -45,7 +42,7 @@ public class StudentImpl<T> implements Dao<T> {
 
     @Override
     public List<T> getAll() {
-        TypedQuery<T> studentTypedQuery = this.entityManager.createNamedQuery("Student.getAll", Student);
+        TypedQuery<T> studentTypedQuery = entityManager.createNamedQuery("Country.getAll", Country);
         return studentTypedQuery.getResultList();
     }
 }

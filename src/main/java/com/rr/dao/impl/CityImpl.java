@@ -1,39 +1,48 @@
 package com.rr.dao.impl;
 
 import com.rr.dao.Dao;
-import com.rr.model.City;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-public class CityImpl<T, PK extends Serializable> implements Dao<City> {
-    private EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
-
+public class CityImpl<T> implements Dao<T> {
+    @PersistenceContext
+    protected EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
+    protected Class<T> City;
 
     @Override
-    public City get(long id) {
-        return null;
+    public T getById(int id) {
+        return entityManager.find(City, id);
     }
 
     @Override
-    public City add(City domain) {
-        return null;
+    public T add(T domain) {
+        this.entityManager.getTransaction().begin();
+        this.entityManager.clear();
+        this.entityManager.merge(domain);
+        this.entityManager.getTransaction().commit();
+        return domain;
     }
 
     @Override
-    public void update(City domain) {
-
+    public void update(T domain) {
+        this.entityManager.getTransaction().begin();
+        this.entityManager.merge(domain);
+        this.entityManager.getTransaction().commit();
     }
 
     @Override
-    public void delete(long id) {
-
+    public void delete(int id) {
+        this.entityManager.getTransaction().begin();
+        this.entityManager.remove(getById(id));
+        this.entityManager.getTransaction().commit();
     }
 
     @Override
-    public List<City> getAll() {
-        TypedQuery<City> studentTypedQuery = entityManager.createNamedQuery("City.getAll", City.class);
-        return studentTypedQuery.getResultList();
+    public List<T> getAll() {
+        TypedQuery<T> cityTypedQuery = entityManager.createNamedQuery("City.getAll", City);
+        return cityTypedQuery.getResultList();
     }
+
 }
