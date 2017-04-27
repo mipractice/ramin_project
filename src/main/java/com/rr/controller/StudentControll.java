@@ -22,7 +22,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Controller {
+public class StudentControll {
 
     @FXML
     private TextField fxId, fxFirstname, fxSurname, fxAddress, fxPhone;
@@ -79,6 +79,7 @@ public class Controller {
                     student.getCity()
             ));
         }
+        tbStudent.setItems(null);
         tbStudent.setItems(studentObservableList);
 
         tcId.setCellValueFactory(new PropertyValueFactory<Student, Long>("id"));
@@ -92,39 +93,57 @@ public class Controller {
     }
 
     public void add(ActionEvent actionEvent) {
-        Student student = new Student();
-
-        student.setFirstname(fxFirstname.getText());
-        student.setSurname(fxSurname.getText());
-        student.setGender(fxGender.getSelectionModel().getSelectedItem());
-        student.setBirthday(new Date(fxBirthday.getValue().getYear() - 1900,
-                fxBirthday.getValue().getMonthValue() - 1,
-                fxBirthday.getValue().getDayOfMonth()));
-        student.setAddress(fxAddress.getText());
-        student.setPhone(fxPhone.getText());
-        student.setCity(new City(fxCity.getSelectionModel().getSelectedItem().getId()));
-
-        studentImpl.add(student);
+        if ((fxFirstname.getText().length() > 0) && (fxSurname.getText().length() > 0) && (!fxGender.getSelectionModel().isEmpty()) &&
+                (fxAddress.getText().length() > 0) && (fxPhone.getText().length() > 0) && (!fxCity.getSelectionModel().isEmpty())) {
+            Student student = new Student();
+            student.setFirstname(fxFirstname.getText());
+            student.setSurname(fxSurname.getText());
+            student.setGender(fxGender.getSelectionModel().getSelectedItem());
+            student.setBirthday(new Date(fxBirthday.getValue().getYear() - 1900, fxBirthday.getValue().getMonthValue() - 1, fxBirthday.getValue().getDayOfMonth()));
+            student.setAddress(fxAddress.getText());
+            student.setPhone(fxPhone.getText());
+            student.setCity(new City(fxCity.getSelectionModel().getSelectedItem().getId()));
+            studentImpl.add(student);
+            alert.setAlertInfo("Поздравляю!", "Новый студент успешно добавлен в БД!",
+                    fxSurname.getText() + " " + fxFirstname.getText() +
+                            "\nПол: " + fxGender.getSelectionModel().getSelectedItem() +
+                            "\nДата рождения: " + fxBirthday.getValue() +
+                            "\nАдрес: " + fxAddress.getText() + " (" + fxCity.getSelectionModel().getSelectedItem() + ")" +
+                            "\nТелефон: " + fxPhone.getText());
+        } else {
+            alert.setAlertWarning("Предупреждение!", "Поле '№' является не обязательным.", "Не все поля заполнены!");
+        }
 
     }
 
     public void update(ActionEvent actionEvent) {
-        Student student = (Student) studentImpl.getById(Integer.parseInt(fxId.getText()));
-        student.setFirstname(fxFirstname.getText());
-        student.setSurname(fxSurname.getText());
-        student.setGender(fxGender.getSelectionModel().getSelectedItem());
-        student.setBirthday(new Date(fxBirthday.getValue().getYear() - 1900,
-                fxBirthday.getValue().getMonthValue() - 1,
-                fxBirthday.getValue().getDayOfMonth()));
-        student.setAddress(fxAddress.getText());
-        student.setPhone(fxPhone.getText());
-        student.setCity(new City(fxCity.getSelectionModel().getSelectedItem().getId()));
+        if ((fxFirstname.getText().length() > 0) && (fxSurname.getText().length() > 0) && (!fxGender.getSelectionModel().isEmpty()) &&
+                (fxAddress.getText().length() > 0) && (fxPhone.getText().length() > 0) && (!fxCity.getSelectionModel().isEmpty())) {
+            Student student = (Student) studentImpl.getById(Integer.parseInt(fxId.getText()));
+            student.setFirstname(fxFirstname.getText());
+            student.setSurname(fxSurname.getText());
+            student.setGender(fxGender.getSelectionModel().getSelectedItem());
+            student.setBirthday(new Date(fxBirthday.getValue().getYear() - 1900,
+                    fxBirthday.getValue().getMonthValue() - 1,
+                    fxBirthday.getValue().getDayOfMonth()));
+            student.setAddress(fxAddress.getText());
+            student.setPhone(fxPhone.getText());
+            student.setCity(new City(fxCity.getSelectionModel().getSelectedItem().getId()));
 
-        studentImpl.update(student);
+            studentImpl.update(student);
+            alert.setAlertInfo("Поздравляю!", "Студент был изменен.", null);
+            ;
+        } else {
+            alert.setAlertWarning("Предупреждение!", "Поле '№' является обязательным.", "Удаление происходит по выбору порядкового номера '№'!");
+        }
     }
 
     public void delete(ActionEvent actionEvent) {
-        studentImpl.delete(Integer.parseInt(fxId.getText()));
+        if (fxId.getText().length() > 0) {
+            alert.setAlertInfo("Поздравляю!", "Студент под №: " + fxId.getText() + ". был удален из БД!", null);
+        } else {
+            alert.setAlertWarning("Предупреждение!", "Поле '№' является обязательным.", "Удаление происходит по выбору порядкового номера '№'!");
+        }
     }
 
     public void print(ActionEvent actionEvent) {
@@ -138,9 +157,11 @@ public class Controller {
                 fxId.setText(String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getId()));
                 fxFirstname.setText(String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getFirstname()));
                 fxSurname.setText(String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getSurname()));
-                //fxGender.
-                //fxBirthday.setValue(tbStudent.getSelectionModel().getSelectedItem().getBirthday());
-                //fxCity.setValue(new City(tbStudent.getSelectionModel().getSelectedItem().getCity().getName()));
+                fxGender.setValue(String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getGender()));
+                LocalDate birthday = LocalDate.parse(String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getBirthday()));
+                fxBirthday.setValue(birthday);
+                fxCity.setValue(new City(tbStudent.getSelectionModel().getSelectedItem().getCity().getId(),
+                        String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getCity())));
                 fxAddress.setText(String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getAddress()));
                 fxPhone.setText(String.valueOf(tbStudent.getSelectionModel().getSelectedItem().getPhone()));
             }
