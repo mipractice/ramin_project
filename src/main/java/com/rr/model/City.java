@@ -7,8 +7,8 @@ import java.util.Collection;
 @Table(name = "city", schema = "Project")
 
 @NamedQueries({
-        @NamedQuery(name = "City.getAll", query = "SELECT c from City c"),
-        @NamedQuery(name = "City.find", query = "SELECT c from City c WHERE c.id = :id")
+        @NamedQuery(name = "getAll", query = "SELECT c from City c"),
+        @NamedQuery(name = "find", query = "SELECT c from City c WHERE c.id = :id")
 })
 public class City {
     private int id;
@@ -41,10 +41,6 @@ public class City {
 
     public City(int id) {
         this.id = id;
-    }
-
-    public City(String name) {
-        this.name = name;
     }
 
     public City(int id, String name) {

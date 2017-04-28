@@ -1,21 +1,23 @@
-package com.rr.dao.impl;
+package com.rr.dao.abst;
 
 import com.rr.dao.Dao;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
-public class CityImpl<T> implements Dao<T> {
+public abstract class AbstractDao<T> implements Dao<T> {
+
     @PersistenceContext
-    private EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
-    private Class<T> City;
+    protected EntityManager entityManager = Persistence.createEntityManagerFactory("persistenceUnit").createEntityManager();
+    protected Class<T> entity;
 
     @Override
     public T getById(int id) {
-        TypedQuery<T> findCity = this.entityManager.createNamedQuery(City + "find", City);
-        findCity.setParameter("id", id);
-        return findCity.getSingleResult();
+        TypedQuery<T> findStudent = this.entityManager.createNamedQuery("find", entity);
+        findStudent.setParameter("id", id);
+        return findStudent.getSingleResult();
     }
 
     @Override
@@ -43,8 +45,7 @@ public class CityImpl<T> implements Dao<T> {
 
     @Override
     public List<T> getAll() {
-        TypedQuery<T> cityTypedQuery = entityManager.createNamedQuery("getAll", City);
-        return cityTypedQuery.getResultList();
+        TypedQuery<T> typedQuery = this.entityManager.createNamedQuery("getAll", entity);
+        return typedQuery.getResultList();
     }
-
 }

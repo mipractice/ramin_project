@@ -2,6 +2,7 @@ package com.rr.controller;
 
 import com.rr.alert.AlertBox;
 import com.rr.dao.impl.StudentImpl;
+import com.rr.dao.impl.service.StudentServiceImpl;
 import com.rr.model.City;
 import com.rr.dao.impl.CityImpl;
 import com.rr.model.Student;
@@ -42,10 +43,10 @@ public class StudentControll {
     private TableColumn<Student, Integer> tcCity;
 
     private AlertBox alert = new AlertBox();
-    private CityImpl ciyImpl = new CityImpl();
-    private StudentImpl studentImpl = new StudentImpl();
+    //private CityImpl ciyImpl = new CityImpl();
+    private StudentServiceImpl studentImpl = new StudentServiceImpl();
 
-    private List<City> listCity = ciyImpl.getAll();
+   // private List<City> listCity = ciyImpl.getAll();
     private List<Student> listStudent;
     private ObservableList<Student> studentObservableList;
 
@@ -54,9 +55,9 @@ public class StudentControll {
         LocalDate defualtDate = LocalDate.parse("1992-01-01");
         fxBirthday.setValue(defualtDate);
         fxGender.getItems().addAll("Мужской", "Женский");
-        for (City city : listCity) {
-            fxCity.getItems().add(new City(city.getId(), city.getName()));
-        }
+//        for (City city : listCity) {
+//            fxCity.getItems().add(new City(city.getId(), city.getName()));
+//        }
         loadStudent();
     }
 

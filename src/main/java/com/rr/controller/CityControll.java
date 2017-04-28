@@ -29,6 +29,9 @@ public class CityControll {
     }
 
     public void addCity(ActionEvent actionEvent) {
+
+
+
         System.out.println("Добавить горд");
     }
 
