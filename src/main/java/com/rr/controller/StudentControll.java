@@ -7,10 +7,8 @@ import com.rr.dao.impl.CityImpl;
 import com.rr.model.Student;
 
 import javafx.collections.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.event.*;
+import javafx.fxml.*;
 import javafx.scene.*;
 import javafx.stage.*;
 import javafx.scene.control.*;
@@ -132,7 +130,6 @@ public class StudentControll {
 
             studentImpl.update(student);
             alert.setAlertInfo("Поздравляю!", "Студент был изменен.", null);
-            ;
         } else {
             alert.setAlertWarning("Предупреждение!", "Поле '№' является обязательным.", "Удаление происходит по выбору порядкового номера '№'!");
         }
@@ -215,4 +212,5 @@ public class StudentControll {
             ex.printStackTrace();
         }
     }
+
 }
