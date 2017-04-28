@@ -1,10 +1,8 @@
 package com.rr.dao.abst;
 
-import com.rr.dao.Dao;
+import com.rr.dao.i.Dao;
 
 import javax.persistence.*;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.List;
 
 public abstract class AbstractDao<T> implements Dao<T> {

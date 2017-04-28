@@ -1,8 +1,8 @@
-package com.rr.dao;
+package com.rr.dao.i;
 
 import java.util.List;
 
-public interface Dao<T> {
+public interface Service<T> {
 
     T getById(int id);
 
@@ -13,5 +13,4 @@ public interface Dao<T> {
     void delete(int id);
 
     List<T> getAll();
-
 }

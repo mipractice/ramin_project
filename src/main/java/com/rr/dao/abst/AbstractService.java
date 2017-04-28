@@ -1,7 +1,7 @@
 package com.rr.dao.abst;
 
-import com.rr.dao.Dao;
-import com.rr.dao.Service;
+import com.rr.dao.i.Dao;
+import com.rr.dao.i.Service;
 
 import java.util.List;
 
