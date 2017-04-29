@@ -7,8 +7,8 @@ import java.util.Collection;
 @Table(name = "city", schema = "Project")
 
 @NamedQueries({
-        @NamedQuery(name = "getAll", query = "SELECT c from City c"),
-        @NamedQuery(name = "find", query = "SELECT c from City c WHERE c.id = :id")
+        @NamedQuery(name = "CityDaoImpl.getAll", query = "SELECT c from City c"),
+        @NamedQuery(name = "CityDaoImpl.find", query = "SELECT c from City c WHERE c.id = :id")
 })
 public class City {
     private int id;

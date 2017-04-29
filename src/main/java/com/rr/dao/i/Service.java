@@ -13,4 +13,5 @@ public interface Service<T> {
     void delete(int id);
 
     List<T> getAll();
+
 }

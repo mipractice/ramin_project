@@ -6,8 +6,8 @@ import java.sql.Date;
 @Entity
 @Table(name = "student", schema = "Project")
 @NamedQueries({
-        @NamedQuery(name = "getAll", query = "SELECT s from Student s"),
-        @NamedQuery(name = "find", query = "SELECT s FROM Student s WHERE s.id = :id")
+        @NamedQuery(name = "StudentDaoImpl.getAll", query = "SELECT s from Student s"),
+        @NamedQuery(name = "StudentDaoImpl.find", query = "SELECT s FROM Student s WHERE s.id = :id")
 })
 public class Student {
     private String gender;
