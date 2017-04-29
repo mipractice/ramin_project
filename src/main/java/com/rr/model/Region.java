@@ -4,13 +4,24 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "region", schema = "Project")
+@Table(name = "region", schema = "Student")
 @NamedQuery(name = "RegionDaoImpl.getAll", query = "SELECT r FROM Region r")
 public class Region {
     private int id;
     private String name;
     private Collection<City> cities;
     private Country country;
+
+    public Region(){}
+
+    public Region(int id) {
+        this.id = id;
+    }
+
+    public Region(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     @Id
     @Column(name = "id")
@@ -71,5 +82,8 @@ public class Region {
         this.country = country;
     }
 
-
+    @Override
+    public String toString(){
+        return name;
+    }
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "city", schema = "Project")
+@Table(name = "city", schema = "Student")
 
 @NamedQueries({
         @NamedQuery(name = "CityDaoImpl.getAll", query = "SELECT c from City c"),
@@ -48,6 +48,12 @@ public class City {
         this.name = name;
     }
 
+    public City(int id, String name, Region region) {
+        this.id = id;
+        this.name = name;
+        this.region = region;
+    }
+
     @ManyToOne
     @JoinColumn(name = "region")
     public Region getRegion() {
@@ -59,7 +65,6 @@ public class City {
     }
 
     @OneToMany(mappedBy = "city")
-
     public Collection<Student> getStudents() {
         return students;
     }

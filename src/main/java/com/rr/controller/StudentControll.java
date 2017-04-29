@@ -57,10 +57,10 @@ public class StudentControll {
         for (City city : listCity) {
             fxCity.getItems().add(new City(city.getId(), city.getName()));
         }
-        loadStudent();
+        viewStudent();
     }
 
-    public void loadStudent() {
+    public void viewStudent() {
         listStudent = studentImpl.getAll();
         studentObservableList = FXCollections.observableArrayList();
 
@@ -144,7 +144,7 @@ public class StudentControll {
     }
 
     public void print(ActionEvent actionEvent) {
-        loadStudent();
+        viewStudent();
     }
 
     public void pick(MouseEvent mouseEvent) {

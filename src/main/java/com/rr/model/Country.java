@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "country", schema = "Project")
+@Table(name = "country", schema = "Student")
 @NamedQuery(name = "CountryDaoImpl.getAll", query = "SELECT c from Country c")
 public class Country {
     private int id;

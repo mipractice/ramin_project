@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "student", schema = "Project")
+@Table(name = "student", schema = "Student")
 @NamedQueries({
         @NamedQuery(name = "StudentDaoImpl.getAll", query = "SELECT s from Student s"),
         @NamedQuery(name = "StudentDaoImpl.find", query = "SELECT s FROM Student s WHERE s.id = :id")
