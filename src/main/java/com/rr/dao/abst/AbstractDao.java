@@ -1,10 +1,8 @@
 package com.rr.dao.abst;
 
 import com.rr.dao.i.Dao;
-import com.rr.Utils;
 
 import javax.persistence.*;
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class AbstractDao<T> implements Dao<T> {
@@ -14,12 +12,6 @@ public abstract class AbstractDao<T> implements Dao<T> {
     protected Class<T> entity;
     protected Class<? extends AbstractDao> type = getClass();
     protected String persistentClass = type.getSimpleName();
-
-//    protected Class<T> persistentClass2 = (Class<T>) Utils.getTypeArguments(AbstractDao.class, this.getClass()).get(0);
-//
-//    public AbstractDao() {
-//        this.entity = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-//    }
 
     @Override
     public T getById(int id) {

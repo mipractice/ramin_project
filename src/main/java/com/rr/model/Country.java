@@ -5,7 +5,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "country", schema = "Project")
-@NamedQuery(name = "Country.getAll", query = "SELECT c from Country c")
+@NamedQuery(name = "CountryDaoImpl.getAll", query = "SELECT c from Country c")
 public class Country {
     private int id;
     private String name;
