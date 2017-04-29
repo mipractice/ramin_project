@@ -5,14 +5,18 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "region", schema = "Student")
-@NamedQuery(name = "RegionDaoImpl.getAll", query = "SELECT r FROM Region r")
+@NamedQueries({
+        @NamedQuery(name = "RegionDaoImpl.getAll", query = "SELECT r FROM Region r"),
+        @NamedQuery(name = "RegionDaoImpl.find", query = "SELECT r from Region r WHERE r.id = :id")
+})
 public class Region {
     private int id;
     private String name;
     private Collection<City> cities;
     private Country country;
 
-    public Region(){}
+    public Region() {
+    }
 
     public Region(int id) {
         this.id = id;
@@ -21,6 +25,12 @@ public class Region {
     public Region(int id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public Region(int id, String name, Country country) {
+        this.id = id;
+        this.name = name;
+        this.country = country;
     }
 
     @Id
@@ -83,7 +93,7 @@ public class Region {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return name;
     }
 }

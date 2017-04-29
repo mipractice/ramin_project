@@ -5,11 +5,22 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "country", schema = "Student")
-@NamedQuery(name = "CountryDaoImpl.getAll", query = "SELECT c from Country c")
+@NamedQueries({
+        @NamedQuery(name = "CountryDaoImpl.getAll", query = "SELECT c from Country c"),
+        @NamedQuery(name = "CountryDaoImpl.find", query = "SELECT c from Country c WHERE c.id = :id")
+})
 public class Country {
     private int id;
     private String name;
     private Collection<Region> regions;
+
+    public Country() {
+    }
+
+    public Country(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     @Id
     @Column(name = "id")

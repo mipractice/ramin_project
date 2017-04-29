@@ -15,7 +15,7 @@ public abstract class AbstractDao<T> implements Dao<T> {
 
     @Override
     public T getById(int id) {
-        TypedQuery<T> findStudent = this.entityManager.createNamedQuery(persistentClass + ".find", entity);
+        TypedQuery<T> findStudent = entityManager.createNamedQuery(persistentClass + ".find", entity);
         findStudent.setParameter("id", id);
         return findStudent.getSingleResult();
     }

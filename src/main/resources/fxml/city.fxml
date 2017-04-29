@@ -18,7 +18,7 @@
                 <ComboBox prefHeight="27.0" prefWidth="165.0" promptText="Регион" fx:id="regionCB"/>
             </items>
         </ToolBar>
-        <TableView prefHeight="361.0" prefWidth="600.0" fx:id="tbCity">
+        <TableView prefHeight="361.0" prefWidth="600.0" fx:id="tbCity" onMouseClicked="#pick">
             <columns>
                 <TableColumn prefWidth="53.0" text="№" fx:id="tcId"/>
                 <TableColumn prefWidth="195.0" text="Город" fx:id="tcCity"/>
