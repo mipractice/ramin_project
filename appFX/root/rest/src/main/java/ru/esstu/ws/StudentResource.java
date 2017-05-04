@@ -1,6 +1,7 @@
 package ru.esstu.ws;
 
 import ru.esstu.se.model.Student;
+import ru.esstu.se.service.impl.StudentServiceImpl;
 import ru.esstu.ws.service.StudentService;
 
 import javax.ws.rs.*;
@@ -19,5 +20,6 @@ public class StudentResource {
         }
         return students;
     }
+
 
 }
