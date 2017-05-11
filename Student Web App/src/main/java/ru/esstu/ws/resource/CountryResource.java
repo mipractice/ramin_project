@@ -4,6 +4,8 @@ package ru.esstu.ws.resource;
 import ru.esstu.db.model.Country;
 import ru.esstu.db.service.i.CountryService;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -12,11 +14,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@RequestScoped
+@Stateless
 @Path("country")
 public class CountryResource {
 
-    @Inject
+    @EJB
     CountryService service;
 
     @GET
