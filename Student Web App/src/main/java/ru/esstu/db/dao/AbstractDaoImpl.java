@@ -1,5 +1,6 @@
 package ru.esstu.db.dao;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;

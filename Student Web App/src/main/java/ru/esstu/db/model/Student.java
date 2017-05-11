@@ -10,7 +10,7 @@ import java.sql.Date;
  * Created by RRM on 08.05.17.
  */
 @Entity
-
+@XmlRootElement
 @NamedQueries({
         @NamedQuery(name = "StudentImplDao.getAll", query = "SELECT c FROM Student c"),
         @NamedQuery(name = "StudentImplDao.find", query = "SELECT c FROM Student c WHERE c.id = :id")
