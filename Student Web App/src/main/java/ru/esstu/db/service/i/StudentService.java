@@ -1,6 +1,7 @@
-package ru.esstu.db.service;
+package ru.esstu.db.service.i;
 
 import ru.esstu.db.model.Student;
+import ru.esstu.db.service.Service;
 
 /**
  * Created by RRM on 10.05.17.

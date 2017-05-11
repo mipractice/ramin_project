@@ -9,7 +9,6 @@
         <class>ru.esstu.db.model.Country</class>
         <class>ru.esstu.db.model.Region</class>
         <class>ru.esstu.db.model.Student</class>
-        <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/Student"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>

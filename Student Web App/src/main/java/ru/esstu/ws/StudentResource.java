@@ -1,7 +1,7 @@
 package ru.esstu.ws;
 
 import ru.esstu.db.model.Student;
-import ru.esstu.db.service.StudentService;
+import ru.esstu.db.service.i.StudentService;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -33,8 +33,6 @@ public class StudentResource {
         if (student == null) {
             throw new NotFoundException();
         }
-        System.out.println(student);
-
         return Response.ok(student).build();
     }
 }

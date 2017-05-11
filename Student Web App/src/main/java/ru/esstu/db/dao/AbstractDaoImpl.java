@@ -1,22 +1,20 @@
 package ru.esstu.db.dao;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 /**
  * Created by RRM on 08.05.17.
  */
-public abstract class AbstractDao<T> implements Dao<T> {
+public abstract class AbstractDaoImpl<T> implements Dao<T> {
 
-//    @PersistenceContext(unitName = "Student", type = PersistenceContextType.TRANSACTION)
     protected EntityManager em;
-//    = Persistence.createEntityManagerFactory("Student").createEntityManager();
     private Class<T> entityClass;
-    private Class<? extends AbstractDao> getClass = getClass();
+    private Class<? extends AbstractDaoImpl> getClass = getClass();
     private String parmClass = getClass.getSimpleName();
-
-
-    public AbstractDao(EntityManager em) {
+    
+    public AbstractDaoImpl(EntityManager em) {
         this.em = em;
     }
 

@@ -1,12 +1,11 @@
 package ru.esstu.ws;
 
 import ru.esstu.db.model.Country;
-import ru.esstu.db.service.impl.CountryImplService;
+import ru.esstu.db.service.impl.CountryServiceImpl;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class CountryResource {
     @Context
     private UriInfo uriInfo;
 
-    CountryImplService service = new CountryImplService();
+    CountryServiceImpl service = new CountryServiceImpl();
 
     @GET
     @Path("getall")
