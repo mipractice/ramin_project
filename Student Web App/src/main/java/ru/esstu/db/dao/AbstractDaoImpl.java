@@ -13,7 +13,7 @@ public abstract class AbstractDaoImpl<T> implements Dao<T> {
     private Class<T> entityClass;
     private Class<? extends AbstractDaoImpl> getClass = getClass();
     private String parmClass = getClass.getSimpleName();
-    
+
     public AbstractDaoImpl(EntityManager em) {
         this.em = em;
     }

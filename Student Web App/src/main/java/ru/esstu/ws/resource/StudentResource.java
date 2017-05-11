@@ -1,4 +1,4 @@
-package ru.esstu.ws;
+package ru.esstu.ws.resource;
 
 import ru.esstu.db.model.Student;
 import ru.esstu.db.service.i.StudentService;
@@ -12,16 +12,15 @@ import java.util.List;
 /**
  * Created by RRM on 08.05.17.
  */
-@Path("student")
-@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Path("/student")
 public class StudentResource {
 
     @EJB
     StudentService service;
 
     @GET
-    @Path("getall")
+    @Path("/getall")
+    @Produces(MediaType.APPLICATION_JSON)
     public List<Student> getAllStudent() {
         return service.getAll();
     }
