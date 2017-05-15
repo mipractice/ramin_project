@@ -6,7 +6,6 @@ import ru.esstu.db.service.i.CountryService;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

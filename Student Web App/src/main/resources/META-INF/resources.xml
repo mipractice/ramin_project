@@ -1,0 +1,9 @@
+<resources>
+  <Resource id="jdbc/blog" type="javax.sql.DataSource">
+    JdbcDriver  com.mysql.jdbc.Driver
+    JdbcUrl jdbc:mysql://localhost/student
+    UserName    root
+    Password    sokto
+    JtaManaged = true
+  </Resource>
+</resources>

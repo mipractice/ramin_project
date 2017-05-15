@@ -7,32 +7,34 @@ import java.util.List;
 /**
  * Created by RRM on 08.05.17.
  */
-public class AbstractServiceImpl<T> implements Service<T> {
+public abstract class AbstractServiceImpl<T> implements Service<T> {
+
+    protected abstract  Dao<T> getDao();
 
     public Dao<T> dao;
 
     @Override
     public List<T> getAll() {
-        return dao.getAll();
+        return getDao().getAll();
     }
 
     @Override
     public T getId(int id) {
-        return dao.getId(id);
+        return getDao().getId(id);
     }
 
     @Override
     public T add(T domain) {
-        return dao.add(domain);
+        return getDao().add(domain);
     }
 
     @Override
     public void update(T domain) {
-        dao.update(domain);
+        getDao().update(domain);
     }
 
     @Override
     public void delete(int id) {
-        dao.delete(id);
+        getDao().delete(id);
     }
 }
