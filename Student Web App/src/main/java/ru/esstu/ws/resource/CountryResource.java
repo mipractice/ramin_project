@@ -6,23 +6,20 @@ import ru.esstu.db.service.i.CountryService;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.faces.bean.RequestScoped;
-import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Stateless
 @Path("country")
+@Produces(MediaType.APPLICATION_JSON)
 public class CountryResource {
 
     @EJB
     CountryService service;
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     public Country getCountryInJSON() {
 
         Country country = new Country();
@@ -35,8 +32,9 @@ public class CountryResource {
 
     @GET
     @Path("/getall")
-    @Produces(MediaType.APPLICATION_JSON)
     public List<Country> getAllCountry() {
+        if (service == null)
+            System.out.println("service == null");
         return service.getAll();
     }
 

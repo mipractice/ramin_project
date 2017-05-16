@@ -2,10 +2,10 @@
 <html>
 <body>
 <ul>
-    <li><a href="api/country/getall">Страна</a></li>
-    <li><a href="api/region/getall">Регион</a></li>
-    <li><a href="api/city/getall">Город</a></li>
-    <li><a href="api/student/getall">Студент</a></li>
+    <li><a href="country/getall">Страна</a></li>
+    <li><a href="region/getall">Регион</a></li>
+    <li><a href="city/getall">Город</a></li>
+    <li><a href="student/getall">Студент</a></li>
 </ul>
 </body>
 </html>

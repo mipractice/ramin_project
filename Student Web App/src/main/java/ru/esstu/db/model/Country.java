@@ -9,7 +9,10 @@ import java.util.Collection;
  */
 @Entity
 @XmlRootElement
-@NamedQuery(name = "CountryImplDao.getAll", query = "SELECT c FROM Country c")
+@NamedQueries({
+        @NamedQuery(name = "CountryDaoImpl.getAll", query = "SELECT c FROM Country c"),
+        @NamedQuery(name = "CountryDaoImpl.find", query = "SELECT c FROM Country c WHERE c.id = :id")
+})
 public class Country {
 
     private int id;

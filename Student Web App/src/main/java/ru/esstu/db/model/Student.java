@@ -1,7 +1,5 @@
 package ru.esstu.db.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Date;
@@ -12,19 +10,17 @@ import java.sql.Date;
 @Entity
 @XmlRootElement
 @NamedQueries({
-        @NamedQuery(name = "StudentImplDao.getAll", query = "SELECT c FROM Student c"),
-        @NamedQuery(name = "StudentImplDao.find", query = "SELECT c FROM Student c WHERE c.id = :id")
+        @NamedQuery(name = "StudentDaoImpl.getAll", query = "SELECT c FROM Student c"),
+        @NamedQuery(name = "StudentDaoImpl.find", query = "SELECT c FROM Student c WHERE c.id = :id")
 })
 public class Student {
     private int id;
     private String firstname;
     private String surname;
     private String gender;
-    @JsonIgnore
     private Date birthday;
     private String address;
     private String phone;
-    @JsonIgnore
     private City city;
 
     public Student() {
