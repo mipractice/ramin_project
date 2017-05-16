@@ -33,8 +33,6 @@ public class CountryResource {
     @GET
     @Path("/getall")
     public List<Country> getAllCountry() {
-        if (service == null)
-            System.out.println("service == null");
         return service.getAll();
     }
 
