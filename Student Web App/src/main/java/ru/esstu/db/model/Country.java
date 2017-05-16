@@ -1,7 +1,10 @@
 package ru.esstu.db.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.Collection;
 
 /**
@@ -51,6 +54,8 @@ public class Country {
         this.name = name;
     }
 
+    @XmlTransient
+    @JsonProperty
     @OneToMany(mappedBy = "country")
     public Collection<Region> getRegions() {
         return regions;

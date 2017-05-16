@@ -2,6 +2,7 @@ package ru.esstu.db.model;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.Collection;
 
 /**
@@ -57,6 +58,7 @@ public class Region {
         this.name = name;
     }
 
+    @XmlTransient
     @OneToMany(mappedBy = "region")
     public Collection<City> getCities() {
         return cities;

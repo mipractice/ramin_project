@@ -13,7 +13,7 @@ import java.util.List;
  * Created by RRM on 08.05.17.
  */
 @Path("/student")
-@Produces(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_XML)
 public class StudentResource {
 
     @EJB
@@ -26,7 +26,7 @@ public class StudentResource {
     }
 
     @GET
-    @Path("get/{id}")
+    @Path("/get/{id}")
     public Response getStudent(@PathParam("id") int id) {
         Student student = (Student) service.getId(id);
         if (student == null) {
