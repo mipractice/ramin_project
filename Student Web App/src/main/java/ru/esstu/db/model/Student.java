@@ -1,19 +1,23 @@
 package ru.esstu.db.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by RRM on 08.05.17.
  */
 @Entity
-@XmlRootElement
+@XmlRootElement(name = "Student")
 @NamedQueries({
         @NamedQuery(name = "StudentDaoImpl.getAll", query = "SELECT c FROM Student c"),
         @NamedQuery(name = "StudentDaoImpl.find", query = "SELECT c FROM Student c WHERE c.id = :id")
 })
 public class Student {
+
     private int id;
     private String firstname;
     private String surname;
@@ -39,6 +43,7 @@ public class Student {
 
     @Id
     @Column(name = "id")
+    @XmlElement(name = "idStudent")
     public int getId() {
         return id;
     }
@@ -109,6 +114,7 @@ public class Student {
 
     @ManyToOne
     @JoinColumn(name = "city")
+    @XmlElement(name = "city")
     public City getCity() {
         return city;
     }

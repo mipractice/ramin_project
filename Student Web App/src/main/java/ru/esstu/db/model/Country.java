@@ -1,17 +1,14 @@
 package ru.esstu.db.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.*;
 import java.util.Collection;
 
 /**
  * Created by RRM on 08.05.17.
  */
 @Entity
-@XmlRootElement
+@XmlRootElement(name = "Country")
 @NamedQueries({
         @NamedQuery(name = "CountryDaoImpl.getAll", query = "SELECT c FROM Country c"),
         @NamedQuery(name = "CountryDaoImpl.find", query = "SELECT c FROM Country c WHERE c.id = :id")
@@ -36,6 +33,7 @@ public class Country {
 
     @Id
     @Column(name = "id")
+    @XmlElement(name = "idCountry")
     public int getId() {
         return id;
     }
@@ -46,6 +44,7 @@ public class Country {
 
     @Basic
     @Column(name = "name")
+    @XmlElement(name = "nameCountry")
     public String getName() {
         return name;
     }
@@ -55,7 +54,6 @@ public class Country {
     }
 
     @XmlTransient
-    @JsonProperty
     @OneToMany(mappedBy = "country")
     public Collection<Region> getRegions() {
         return regions;

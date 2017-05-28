@@ -25,7 +25,7 @@ public class CountryResource {
 
     @GET
     @Path("/get/{id}")
-    public Response getContry(@PathParam("id") int id) {
+    public Response getCountry(@PathParam("id") int id) {
 
         Country country = (Country) service.getId(id);
         if (country == null)

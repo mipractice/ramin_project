@@ -1,6 +1,7 @@
 package ru.esstu.db.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.Collection;
@@ -9,7 +10,7 @@ import java.util.Collection;
  * Created by RRM on 08.05.17.
  */
 @Entity
-@XmlRootElement
+@XmlRootElement(name = "City")
 @NamedQueries({
         @NamedQuery(name = "CityDaoImpl.getAll", query = "SELECT c FROM City c"),
         @NamedQuery(name = "CityDaoImpl.find", query = "SELECT c FROM City c WHERE c.id = :id")
@@ -40,6 +41,7 @@ public class City {
 
     @Id
     @Column(name = "id")
+    @XmlElement(name = "idCity")
     public int getId() {
         return id;
     }
@@ -50,6 +52,7 @@ public class City {
 
     @Basic
     @Column(name = "name")
+    @XmlElement(name = "nameCity")
     public String getName() {
         return name;
     }
