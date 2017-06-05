@@ -8,8 +8,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link href="css/style.css" rel="stylesheet"
-          type="text/css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <title>Student Web Service with RESTful</title>
 </head>
 
@@ -43,7 +43,7 @@
                     <div class="panel panel-default panel-floating panel-floating-inline">
                         <div class="panel-body">
                             <div class="panel-actions">
-                                <form id="studentForm" >
+                                <form id="studentForm">
                                     <div class="form-group">
                                         <label for="idStudent">№</label>
                                         <input class="form-control" type="text" id="idStudent" placeholder="№">
@@ -129,7 +129,6 @@
                                     <a class="nav-link" data-toggle="tab" href="#studentTab" role="tab">Студент</a>
                                 </li>
                             </ul>
-
                             <div class="tab-content">
                                 <div class="tab-pane" id="countryTab" role="tabpanel">
                                     <table id="countryTable" class="table table-bordered">
@@ -146,16 +145,16 @@
                                 </div>
                                 <div class="tab-pane" id="regionTab" role="tabpanel">
                                     <table id="regionTable" class="table table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th>№</th>
-                                        <th>Название</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="regionBody">
+                                        <thead>
+                                        <tr>
+                                            <th>№</th>
+                                            <th>Название</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="regionBody">
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class="tab-pane" id="cityTab" role="tabpanel">
                                     <table id="cityTable" class="table table-bordered">
@@ -178,10 +177,11 @@
                                             <th>Имя</th>
                                             <th>Фамилия</th>
                                             <th>Пол</th>
-                                            <th>Дата рождения</th>
+                                            <%--<th>Дата рождения</th>--%>
                                             <th>Адрес</th>
                                             <th>Город</th>
                                             <th>Телефон</th>
+                                            <th>Функции</th>
                                         </tr>
                                         </thead>
                                         <tbody id="studentBody">

@@ -96,10 +96,13 @@ $(function () {
                         '<td>' + firstname + '</td>' +
                         '<td>' + surname + '</td>' +
                         '<td>' + gender + '</td>' +
-                        '<td>' + birthday + '</td>' +
+                        // '<td>' + birthday + '</td>' +
                         '<td>' + address + '</td>' +
                         '<td>' + city + '</td>' +
                         '<td>' + phone + '</td>' +
+                        '<td>' +
+                            '<a id="deleteStudent" href="http://localhost:8080/student-ws-app/student/delete/'+ id + '" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i></a>' +
+                        '</td>' +
                         '</tr>'
                     );
                 });

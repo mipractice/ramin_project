@@ -4,8 +4,6 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 /**
  * Created by RRM on 08.05.17.
@@ -30,14 +28,14 @@ public class Student {
     public Student() {
     }
 
-    public Student(String gender, Date birthday, String phone, String address, int id, String firstname, String surname, City city) {
-        this.gender = gender;
-        this.birthday = birthday;
-        this.phone = phone;
-        this.address = address;
+    public Student(int id, String firstname, String surname, String gender, Date birthday, String address, String phone, City city) {
         this.id = id;
         this.firstname = firstname;
         this.surname = surname;
+        this.gender = gender;
+        this.birthday = birthday;
+        this.address = address;
+        this.phone = phone;
         this.city = city;
     }
 

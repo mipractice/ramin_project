@@ -19,6 +19,29 @@ public class StudentResource {
     @EJB
     StudentService service;
 
+    @PUT
+    @Path("/create")
+    public Student create(
+            @QueryParam("firstname") String firstname,
+            @QueryParam("surname") String surname,
+            @QueryParam("gender") String gender,
+//            @QueryParam("birthday") String birthday,
+            @QueryParam("address") String address,
+            @QueryParam("phone") String phone,
+            @QueryParam("city") int city) {
+
+        Student student = new Student();
+        student.setFirstname(firstname);
+        student.setSurname(surname);
+        student.setGender(gender);
+//        student.setBirthday(new Date());
+        student.setAddress(address);
+        student.setPhone(phone);
+//        student.setCity(new City(city));
+
+        return (Student) service.add(student);
+    }
+
     @GET
     @Path("/getall")
     public List<Student> getAllStudent() {
@@ -34,4 +57,11 @@ public class StudentResource {
         }
         return Response.ok(student).build();
     }
+
+    @GET
+    @Path("/delete/{id}")
+    public void deleteStudent(@PathParam("id") int id) {
+        service.delete(id);
+    }
+
 }

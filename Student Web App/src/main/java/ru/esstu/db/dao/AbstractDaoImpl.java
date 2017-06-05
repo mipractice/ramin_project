@@ -44,6 +44,6 @@ public abstract class AbstractDaoImpl<T> implements Dao<T> {
 
     @Override
     public void delete(int id) {
-
+        em.remove(getId(id));
     }
 }
